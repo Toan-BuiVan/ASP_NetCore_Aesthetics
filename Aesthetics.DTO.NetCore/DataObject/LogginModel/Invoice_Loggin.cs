@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
+{
+    public class Invoice_Loggin_Input
+    {
+		public int InvoiceID { get; set; }
+		public int? EmployeeID { get; set; }
+		public double? TotalAmount { get; set; }
+		public DateTime? DateCreated { get; set; }
+		public int? DeleteStatus { get; set; }
+		public string? Type { get; set; }
+	}
+
+	public class Invoice_Loggin_Ouput
+	{
+		public int InvoiceID { get; set; }
+		public int? CustomerID { get; set; }
+		public int? EmployeeID { get; set; }
+		public int? VoucherID { get; set; }
+		public string? Code { get; set; }
+		public double? DiscountValue { get; set; }
+		public double? TotalAmount { get; set; }
+		public DateTime? DateCreated { get; set; }
+		public int? Status { get; set; }
+		public int? DeleteStatus { get; set; }
+		public string? Type { get; set; }
+	}
+}

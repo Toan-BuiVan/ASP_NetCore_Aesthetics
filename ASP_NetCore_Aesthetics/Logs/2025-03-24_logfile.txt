@@ -1,0 +1,89 @@
+2025-03-24 15:54:54.1988 INFO Insert_Wallets Request: {"UserID":0,"VoucherID":0}
+2025-03-24 15:54:54.2135 INFO Insert_Wallets Response data: null
+2025-03-24 15:56:28.3182 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":1}
+2025-03-24 15:56:28.3251 INFO Insert_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":1}]
+2025-03-24 15:56:44.9563 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":3}
+2025-03-24 15:56:44.9563 INFO Insert_Wallets Response data: null
+2025-03-24 15:57:44.5959 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":4}
+2025-03-24 15:57:44.5959 INFO Insert_Wallets Response data: null
+2025-03-24 16:07:47.1037 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":3}
+2025-03-24 16:07:47.1201 INFO Insert_Wallets Response data: null
+2025-03-24 16:10:41.4662 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":3}
+2025-03-24 16:10:41.4662 INFO Insert_Wallets Response data: null
+2025-03-24 16:14:06.0146 INFO Insert_Wallets Request: {"UserID":1,"VoucherID":3}
+2025-03-24 16:14:06.0245 INFO Insert_Wallets Response data: [{"WalletsID":2,"UserID":1,"VoucherID":3}]
+2025-03-24 16:14:34.2371 INFO Insert_Wallets Request: {"UserID":2,"VoucherID":3}
+2025-03-24 16:14:34.2371 INFO Insert_Wallets Response data: null
+2025-03-24 16:14:50.5117 INFO Insert_Wallets Request: {"UserID":2,"VoucherID":3}
+2025-03-24 16:14:50.5117 INFO Insert_Wallets Response data: [{"WalletsID":3,"UserID":2,"VoucherID":3}]
+2025-03-24 16:15:08.5954 INFO Insert_Wallets Request: {"UserID":2,"VoucherID":1}
+2025-03-24 16:15:08.5954 INFO Insert_Wallets Response data: [{"WalletsID":4,"UserID":2,"VoucherID":1}]
+2025-03-24 16:15:29.9613 INFO Insert_Wallets Request: {"UserID":2,"VoucherID":5}
+2025-03-24 16:15:29.9613 INFO Insert_Wallets Response data: null
+2025-03-24 16:27:48.4812 INFO Update_Wallets Request: {"WalletsID":0,"UserID":0,"VoucherID":0}
+2025-03-24 16:27:48.4950 INFO Update_Wallets Response data: null
+2025-03-24 16:28:44.1353 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":4}
+2025-03-24 16:28:44.1353 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":1}]
+2025-03-24 16:32:00.6950 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":4}
+2025-03-24 16:32:00.6950 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":1}]
+2025-03-24 16:36:33.5748 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":4}
+2025-03-24 16:36:33.5905 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":4}]
+2025-03-24 16:36:55.0696 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":5}
+2025-03-24 16:36:55.0696 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5}]
+2025-03-24 16:37:03.4789 INFO Update_Wallets Request: {"WalletsID":1,"UserID":2,"VoucherID":5}
+2025-03-24 16:37:03.4789 INFO Update_Wallets Response data: null
+2025-03-24 17:06:17.6544 ERROR {Error Update_Wallets} Message: Error in Update_Wallets Message: Object reference not set to an instance of an object. | StackTrace:    at Aesthetics.DataAccess.NetCore.Repositories.Implement.WalletsRepository.Update_Wallets(Update_Wallest update_) in D:\Aesthetics\ASP_NetCore_Aesthetics\Aesthetics.DataAccess.NetCore\Repositories\Implement\WalletsRepository.cs:line 199|Stack Trace:    at Aesthetics.DataAccess.NetCore.Repositories.Implement.WalletsRepository.Update_Wallets(Update_Wallest update_) in D:\Aesthetics\ASP_NetCore_Aesthetics\Aesthetics.DataAccess.NetCore\Repositories\Implement\WalletsRepository.cs:line 251
+   at ASP_NetCore_Aesthetics.Controllers.WalletsController.Update_Wallets(Update_Wallest update_) in D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\Controllers\WalletsController.cs:line 59
+2025-03-24 17:07:14.5631 INFO Update_Wallets Request: {"WalletsID":1,"UserID":2,"VoucherID":null}
+2025-03-24 17:07:14.5631 INFO Update_Wallets Response data: null
+2025-03-24 17:08:01.3848 INFO Update_Wallets Request: {"WalletsID":1,"UserID":2,"VoucherID":null}
+2025-03-24 17:08:01.4024 INFO Update_Wallets Response data: null
+2025-03-24 21:19:52.5790 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":5}
+2025-03-24 21:19:52.6039 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5}]
+2025-03-24 21:20:01.9023 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":4}
+2025-03-24 21:20:01.9023 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":4}]
+2025-03-24 21:20:07.3353 INFO Update_Wallets Request: {"WalletsID":1,"UserID":1,"VoucherID":5}
+2025-03-24 21:20:07.3353 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5}]
+2025-03-24 21:20:29.2389 INFO Update_Wallets Request: {"WalletsID":3,"UserID":2,"VoucherID":5}
+2025-03-24 21:20:29.2389 INFO Update_Wallets Response data: null
+2025-03-24 21:20:42.4970 INFO Update_Wallets Request: {"WalletsID":1,"UserID":2,"VoucherID":null}
+2025-03-24 21:20:42.4970 INFO Update_Wallets Response data: null
+2025-03-24 21:22:07.9036 INFO Update_Wallets Request: {"WalletsID":1,"UserID":null,"VoucherID":3}
+2025-03-24 21:22:07.9036 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":3}]
+2025-03-24 21:22:28.9421 INFO Update_Wallets Request: {"WalletsID":1,"UserID":null,"VoucherID":5}
+2025-03-24 21:22:28.9421 INFO Update_Wallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5}]
+2025-03-24 21:25:40.1413 INFO Delete_Wallets Request: {"WalletsID":0}
+2025-03-24 21:25:40.1513 INFO Delete_Wallets Response data: null
+2025-03-24 21:26:31.5816 INFO Delete_Wallets Request: {"WalletsID":4}
+2025-03-24 21:26:31.5922 INFO Delete_Wallets Response data: [{"WalletsID":4,"UserID":2,"VoucherID":1}]
+2025-03-24 21:59:26.5246 INFO GetList_SearchWallets Request: {"WalletsID":0,"UserID":0,"VoucherID":0}
+2025-03-24 21:59:26.5401 INFO GetList_SearchWallets Response data: null
+2025-03-24 21:59:41.6729 INFO GetList_SearchWallets Request: {"WalletsID":1,"UserID":null,"VoucherID":null}
+2025-03-24 21:59:41.6729 INFO GetList_SearchWallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5}]
+2025-03-24 22:00:02.4744 INFO GetList_SearchWallets Request: {"WalletsID":null,"UserID":1,"VoucherID":null}
+2025-03-24 22:00:02.4744 INFO GetList_SearchWallets Response data: [{"WalletsID":1,"UserID":1,"VoucherID":5},{"WalletsID":2,"UserID":1,"VoucherID":3}]
+2025-03-24 22:00:18.6082 INFO GetList_SearchWallets Request: {"WalletsID":null,"UserID":null,"VoucherID":3}
+2025-03-24 22:00:18.6082 INFO GetList_SearchWallets Response data: [{"WalletsID":2,"UserID":1,"VoucherID":3},{"WalletsID":3,"UserID":2,"VoucherID":3}]
+2025-03-24 22:30:52.9696 INFO CreateAccount_Staff Request: {"UserName":"string","PassWord":"string","ReferralCode":"string"}
+2025-03-24 22:30:52.9811 INFO Insert Carts Response data : null
+2025-03-24 22:30:52.9811 INFO Create_Account Response data : null
+2025-03-24 22:31:40.6723 INFO CreateAccount_Doctor Request: {"UserName":"string","PassWord":"string","ReferralCode":"string"}
+2025-03-24 22:31:40.6723 INFO Insert Carts Response data : null
+2025-03-24 22:31:40.6723 INFO Create_Account Response data : null
+2025-03-24 22:32:45.2277 INFO CreateAccount_Admin Request: {"UserName":"string","PassWord":"string","ReferralCode":"string"}
+2025-03-24 22:32:45.2277 INFO Insert Carts Response data : null
+2025-03-24 22:32:45.2277 INFO Create_Account Response data : null
+2025-03-24 22:33:21.9612 INFO CreateAccount_Admin Request: {"UserName":"buiToan","PassWord":"123456","ReferralCode":null}
+2025-03-24 22:33:21.9612 INFO Insert Carts Response data : null
+2025-03-24 22:33:21.9612 INFO Create_Account Response data : null
+2025-03-24 22:33:30.0230 INFO CreateAccount_Admin Request: {"UserName":"buiToanVan","PassWord":"123456","ReferralCode":null}
+2025-03-24 22:33:30.0316 INFO Insert Carts Response data : [{"CartID":11,"UserID":36,"CreationDate":"2025-03-24T22:33:29.9867352+07:00"}]
+2025-03-24 22:33:30.0316 INFO Create_Account Response data : [{"UserID":36,"UserName":"buiToanVan","PassWord":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","Email":null,"DateBirth":null,"Sex":null,"Creation":"2025-03-24T22:33:29.8656557+07:00","Phone":null,"Addres":null,"IDCard":null,"TypePerson":"Admin","AccumulatedPoints":0,"ReferralCode":"QLUPS","RefeshToken":null,"DeleteStatus":1,"Moneyy":0.0,"TokenExprired":null,"RatingPoints":0,"RankMember":"Diamond"}]
+2025-03-24 23:28:54.4511 INFO GetList_SearchSupplier Request: {"SupplierID":null,"SupplierName":null}
+2025-03-24 23:28:54.7798 INFO GetList_SearchSupplier db: [{"SupplierID":1,"SupplierName":"Công ty TNHH B.Braun Việt Nam"},{"SupplierID":2,"SupplierName":"Công ty TNHH Dược Mỹ Phẩm LAVITE"},{"SupplierID":3,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Ngọc Anh"},{"SupplierID":4,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức Hải"},{"SupplierID":5,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Hải Hưng"},{"SupplierID":6,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức"},{"SupplierID":7,"SupplierName":"Công ty TNHH Thiết Bị Y Minh Anh"}]
+2025-03-24 23:29:09.3314 INFO GetList_SearchSupplier Request: {"SupplierID":null,"SupplierName":null}
+2025-03-24 23:29:09.3513 INFO GetList_SearchSupplier cache: [{"SupplierID":1,"SupplierName":"Công ty TNHH B.Braun Việt Nam"},{"SupplierID":2,"SupplierName":"Công ty TNHH Dược Mỹ Phẩm LAVITE"},{"SupplierID":3,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Ngọc Anh"},{"SupplierID":4,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức Hải"},{"SupplierID":5,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Hải Hưng"},{"SupplierID":6,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức"},{"SupplierID":7,"SupplierName":"Công ty TNHH Thiết Bị Y Minh Anh"}]
+2025-03-24 23:29:09.3513 INFO GetList_SearchSupplier cache Request: [{"SupplierID":1,"SupplierName":"Công ty TNHH B.Braun Việt Nam"},{"SupplierID":2,"SupplierName":"Công ty TNHH Dược Mỹ Phẩm LAVITE"},{"SupplierID":3,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Ngọc Anh"},{"SupplierID":4,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức Hải"},{"SupplierID":5,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Hải Hưng"},{"SupplierID":6,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức"},{"SupplierID":7,"SupplierName":"Công ty TNHH Thiết Bị Y Minh Anh"}]
+2025-03-24 23:30:56.2084 INFO GetList_SearchSupplier Request: {"SupplierID":null,"SupplierName":null}
+2025-03-24 23:30:56.2084 INFO GetList_SearchSupplier cache: [{"SupplierID":1,"SupplierName":"Công ty TNHH B.Braun Việt Nam"},{"SupplierID":2,"SupplierName":"Công ty TNHH Dược Mỹ Phẩm LAVITE"},{"SupplierID":3,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Ngọc Anh"},{"SupplierID":4,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức Hải"},{"SupplierID":5,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Hải Hưng"},{"SupplierID":6,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức"},{"SupplierID":7,"SupplierName":"Công ty TNHH Thiết Bị Y Minh Anh"}]
+2025-03-24 23:30:56.2084 INFO GetList_SearchSupplier cache Request: [{"SupplierID":1,"SupplierName":"Công ty TNHH B.Braun Việt Nam"},{"SupplierID":2,"SupplierName":"Công ty TNHH Dược Mỹ Phẩm LAVITE"},{"SupplierID":3,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Ngọc Anh"},{"SupplierID":4,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức Hải"},{"SupplierID":5,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Hải Hưng"},{"SupplierID":6,"SupplierName":"Công ty TNHH Thiết Bị Y Tế Đức"},{"SupplierID":7,"SupplierName":"Công ty TNHH Thiết Bị Y Minh Anh"}]
