@@ -183,7 +183,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				var newInvoice = new Invoice
 				{
 					EmployeeID = employee?.UserID,
-					TotalAmount = products_.Quantity * products_.SellingPrice,
 					DateCreated = DateTime.Now,
 					DeleteStatus = 1,
 					Type = "Input"
@@ -194,7 +193,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				{
 					InvoiceID = newInvoice.InvoiceID,
 					EmployeeID = newInvoice.EmployeeID,
-					TotalAmount = newInvoice.TotalAmount,
 					DateCreated = newInvoice.DateCreated,
 					DeleteStatus = newInvoice.DeleteStatus,
 					Type = newInvoice.Type,
@@ -205,12 +203,12 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				{
 					InvoiceID = newInvoice.InvoiceID,
 					EmployeeID = newInvoice.EmployeeID,
-					EmployeeName = employee.UserName,
+					EmployeeName = employee?.UserName,
 					ProductID = newProduct.ProductID,
 					ProductName = products_.ProductName,
 					PriceProduct = products_.SellingPrice,
 					TotalQuantityProduct = products_.Quantity,
-					TotalMoney = newInvoice.TotalAmount,
+					TotalMoney = products_.Quantity * products_.SellingPrice,
 					DeleteStatus = 1,
 					Type = newInvoice.Type
 				};
@@ -226,7 +224,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					ProductName = newInvoiceDetail.ProductName,
 					PriceProduct = newInvoiceDetail.PriceProduct,
 					TotalQuantityProduct = newProduct.Quantity,
-					TotalMoney = newInvoice.TotalAmount,
+					TotalMoney = newInvoiceDetail.TotalMoney,
 					DeleteStatus = 1,
 					Type = newInvoice.Type
 				});

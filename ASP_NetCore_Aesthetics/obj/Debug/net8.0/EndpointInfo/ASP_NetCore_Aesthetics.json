@@ -873,6 +873,37 @@
         }
       }
     },
+    "/api/Invoice/Insert_Invoice": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Products/Insert_Products": {
       "post": {
         "tags": [
@@ -1462,7 +1493,7 @@
         }
       }
     },
-    "/api/Users/CreateAccount_Staff": {
+    "/api/Users/CreateAccount_Employee": {
       "post": {
         "tags": [
           "Users"
@@ -2473,6 +2504,59 @@
           "serviceID": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceRequest": {
+        "type": "object",
+        "properties": {
+          "customerID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "employeeID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "voucherID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productIDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "quantityProduct": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "servicesIDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "quantityServices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

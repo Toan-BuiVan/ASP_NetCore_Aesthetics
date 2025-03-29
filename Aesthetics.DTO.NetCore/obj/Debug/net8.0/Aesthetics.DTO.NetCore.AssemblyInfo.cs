@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Aesthetics.DTO.NetCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e67db479a9bb3eb4c416f25c77f7f488c1ce51b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6272f064afdf260641330543dff9d5f6a7ae367a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Aesthetics.DTO.NetCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Aesthetics.DTO.NetCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

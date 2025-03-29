@@ -162,4 +162,3 @@ D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\obj\Release\net8.0\r
 D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\obj\Release\net8.0\ASP_NetCore_Aesthetics.pdb
 D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\obj\Release\net8.0\ASP_NetCore_Aesthetics.genruntimeconfig.cache
 D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\obj\Release\net8.0\ref\ASP_NetCore_Aesthetics.dll
-D:\Aesthetics\ASP_NetCore_Aesthetics\ASP_NetCore_Aesthetics\bin\Release\net8.0\web.config

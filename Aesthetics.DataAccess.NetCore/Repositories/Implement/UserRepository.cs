@@ -202,10 +202,11 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error CreateAccount Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+				await transaction.RollbackAsync();
+				throw new Exception($"Error CreateAccount_Customer Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
-		public async Task<ResponseUser_InsertLoggin> CreateAccount_Staff(User_CreateAccount account)
+		public async Task<ResponseUser_InsertLoggin> CreateAccount_Employee(User_CreateAccount account)
 		{
 			var returnData = new ResponseUser_InsertLoggin();
 			using var transaction = await _context.Database.BeginTransactionAsync();
@@ -265,13 +266,13 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					UserName = account.UserName,
 					PassWord = passWordHash,
 					Creation = creation,
-					TypePerson = "Staff",
+					TypePerson = "Employee",
 					AccumulatedPoints = 0,
 					DeleteStatus = 1,
 					Moneyy = 0,
 					ReferralCode = ReferralCode_User,
 					RatingPoints = 0,
-					RankMember = "Gold"
+					RankMember = "Silver"
 				};
 				await _context.Users.AddAsync(newUsers);
 				await _context.SaveChangesAsync();
@@ -324,7 +325,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error CreateAccount Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+				await transaction.RollbackAsync();
+				throw new Exception($"Error CreateAccount_Staff Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 		public async Task<ResponseUser_InsertLoggin> CreateAccount_Doctor(User_CreateAccount account)
@@ -446,7 +448,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error CreateAccount Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+				await transaction.RollbackAsync();
+				throw new Exception($"Error CreateAccount_Doctor Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 		public async Task<ResponseUser_InsertLoggin> CreateAccount_Admin(User_CreateAccount account)
@@ -568,7 +571,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error CreateAccount Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+				await transaction.RollbackAsync();
+				throw new Exception($"Error CreateAccount_Admin Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 

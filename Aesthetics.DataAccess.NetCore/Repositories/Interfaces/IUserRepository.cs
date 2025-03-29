@@ -17,7 +17,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interface
 		Task<ResponseUser_InsertLoggin> CreateAccount_Customer(User_CreateAccount account);
 
 		//2.Function Tạo Account_Staff
-		Task<ResponseUser_InsertLoggin> CreateAccount_Staff(User_CreateAccount account);
+		Task<ResponseUser_InsertLoggin> CreateAccount_Employee(User_CreateAccount account);
 		//3.Function Tạo Account_Doctor
 		Task<ResponseUser_InsertLoggin> CreateAccount_Doctor(User_CreateAccount account);
 		//4.Function Tạo Account_Admin

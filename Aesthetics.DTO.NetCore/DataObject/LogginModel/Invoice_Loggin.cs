@@ -10,7 +10,6 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
     {
 		public int InvoiceID { get; set; }
 		public int? EmployeeID { get; set; }
-		public double? TotalAmount { get; set; }
 		public DateTime? DateCreated { get; set; }
 		public int? DeleteStatus { get; set; }
 		public string? Type { get; set; }
@@ -24,9 +23,8 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public int? VoucherID { get; set; }
 		public string? Code { get; set; }
 		public double? DiscountValue { get; set; }
-		public double? TotalAmount { get; set; }
 		public DateTime? DateCreated { get; set; }
-		public int? Status { get; set; }
+		public string? Status { get; set; }
 		public int? DeleteStatus { get; set; }
 		public string? Type { get; set; }
 	}

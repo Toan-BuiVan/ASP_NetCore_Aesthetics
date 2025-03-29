@@ -28,7 +28,8 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
 		public int? TotalQuantityService { get; set; }
 		public int? TotalQuantityProduct { get; set; }
 		public double? TotalMoney { get; set; }
-        public int? DeleteStatus { get; set; }
+		public string? Status { get; set; }
+		public int? DeleteStatus { get; set; }
         public string? Type { get; set; }
         public Invoice Invoice { get; set; }
         public Users Users { get; set; }

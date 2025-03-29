@@ -41,6 +41,7 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public int? TotalQuantityService { get; set; }
 		public int? TotalQuantityProduct { get; set; }
 		public double? TotalMoney { get; set; }
+		public string? Status { get; set; }
 		public int? DeleteStatus { get; set; }
 		public string? Type { get; set; }
 	}

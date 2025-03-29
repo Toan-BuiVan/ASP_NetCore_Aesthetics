@@ -16,9 +16,8 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
 		public int? VoucherID { get; set; }
         public string? Code { get; set; }
         public double? DiscountValue { get; set; }
-        public double? TotalAmount { get; set; }
         public DateTime? DateCreated { get; set; }
-        public int? Status { get; set; }
+        public string? Status { get; set; }
         public int? DeleteStatus { get; set; }
         public string? Type { get; set; }
         public Users Users { get; set; }

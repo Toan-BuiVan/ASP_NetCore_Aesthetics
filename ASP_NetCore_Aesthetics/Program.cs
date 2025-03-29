@@ -53,6 +53,7 @@ builder.Services.AddTransient<ICommentRepository, CommentRepository>();
 builder.Services.AddTransient<ICartProductRepository, CartProductRepositoty>();
 builder.Services.AddTransient<IVouchersRepository, VouchersRepository>();
 builder.Services.AddTransient<IWalletsRepository, WalletsRepository>();
+builder.Services.AddTransient<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<Filter_CheckToken>();
 builder.Services.AddTransient<ILoggerManager, LoggerManager>();
 builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configuration["RedisCacheUrl"]; });

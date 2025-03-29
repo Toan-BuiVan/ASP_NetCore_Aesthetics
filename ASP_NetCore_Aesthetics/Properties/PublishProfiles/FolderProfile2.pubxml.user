@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Aesthetics\IIS\public_Aesthetics</_PublishTargetUrl>
-    <History>False|2025-03-27T07:29:33.0007986Z||;False|2025-03-27T14:27:31.3902193+07:00||;False|2025-03-27T14:25:52.0236636+07:00||;False|2025-03-27T14:25:38.6980249+07:00||;False|2025-03-27T14:23:58.7383754+07:00||;</History>
+    <History>True|2025-03-27T15:58:19.1859453Z||;False|2025-03-27T14:29:33.0007986+07:00||;False|2025-03-27T14:27:31.3902193+07:00||;False|2025-03-27T14:25:52.0236636+07:00||;False|2025-03-27T14:25:38.6980249+07:00||;False|2025-03-27T14:23:58.7383754+07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

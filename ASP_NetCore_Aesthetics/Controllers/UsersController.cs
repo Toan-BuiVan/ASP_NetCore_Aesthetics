@@ -56,15 +56,15 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 		}
 
-		[HttpPost("CreateAccount_Staff")]
-		public async Task<IActionResult> CreateAccount_Staff(User_CreateAccount account)
+		[HttpPost("CreateAccount_Employee")]
+		public async Task<IActionResult> CreateAccount_Employee(User_CreateAccount account)
 		{
 			try
 			{
-				//1. CreateAccount_Staff
-				var responseData = await _user.CreateAccount_Staff(account);
+				//1. CreateAccount_Employee
+				var responseData = await _user.CreateAccount_Employee(account);
 				//2. Lưu log request
-				_loggerManager.LogInfo("CreateAccount_Staff Request: " + JsonConvert.SerializeObject(account));
+				_loggerManager.LogInfo("CreateAccount_Employee Request: " + JsonConvert.SerializeObject(account));
 				//3. Lưu log data carts
 				_loggerManager.LogInfo("Insert Carts Response data : " + JsonConvert.SerializeObject(responseData.listCarts));
 				//4. Lưu log data user
@@ -79,7 +79,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 			catch (Exception ex)
 			{
-				_loggerManager.LogError("{Error CreateAccount_Staff} Message: " + ex.Message +
+				_loggerManager.LogError("{Error CreateAccount_Employee} Message: " + ex.Message +
 					"|" + "Stack Trace: " + ex.StackTrace);
 				return Ok(ex.Message);
 			}

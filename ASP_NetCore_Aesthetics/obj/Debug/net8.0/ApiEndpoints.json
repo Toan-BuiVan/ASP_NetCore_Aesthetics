@@ -448,6 +448,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "Insert_Invoice",
+    "RelativePath": "api/Invoice/Insert_Invoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.InvoiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
     "Method": "Delete_Products",
     "RelativePath": "api/Products/Delete_Products",
@@ -785,8 +801,8 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
-    "Method": "CreateAccount_Staff",
-    "RelativePath": "api/Users/CreateAccount_Staff",
+    "Method": "CreateAccount_Employee",
+    "RelativePath": "api/Users/CreateAccount_Employee",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
