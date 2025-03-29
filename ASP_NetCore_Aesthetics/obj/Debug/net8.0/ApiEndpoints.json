@@ -449,6 +449,38 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "Delete_Invoice",
+    "RelativePath": "api/Invoice/Delete_Invoice",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Invoice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "GetList_SearchInvoice",
+    "RelativePath": "api/Invoice/GetList_SearchInvoice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_Invoice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
     "Method": "Insert_Invoice",
     "RelativePath": "api/Invoice/Insert_Invoice",
     "HttpMethod": "POST",

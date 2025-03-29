@@ -16,4 +16,14 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public List<int>? ServicesIDs { get; set; }
 		public List<int>? QuantityServices { get; set; }
 	}
+	public class Delete_Invoice
+	{
+		public int InvoiceID { get; set; }
+	}
+	public class GetList_Invoice
+	{
+		public int? CustomerID { get; set; }
+		public int? EmployeeID { get; set; }
+		public int? InvoiceID { get; set; }
+	}
 }

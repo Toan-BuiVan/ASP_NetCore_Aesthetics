@@ -43,16 +43,16 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					returnData.ResposeMessage = "Description không hợp lệ!";
 					return returnData;
 				}
-				if (insert_.DiscountValue <= 0 )
+				if (insert_.DiscountValue <= 0 || insert_.DiscountValue > 100)
 				{
 					returnData.ResponseCode = -1;
-					returnData.ResposeMessage = "DiscountValue không hợp lệ!";
+					returnData.ResposeMessage = "DiscountValue không hợp lệ! Phải nằm trong khoảng 1 - 100.";
 					return returnData;
 				}
-				if (insert_.StartDate < DateTime.Today || insert_.EndDate < DateTime.Today) 
+				if (insert_.StartDate < DateTime.Today || insert_.EndDate < DateTime.Today || insert_.StartDate > insert_.EndDate)
 				{
 					returnData.ResponseCode = -1;
-					returnData.ResposeMessage = "StartDate || EndDate không hợp lệ!";
+					returnData.ResposeMessage = "StartDate hoặc EndDate không hợp lệ!";
 					return returnData;
 				}
 				if (insert_.StartDate > insert_.EndDate)
@@ -149,17 +149,17 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				}
 				if (update_.DiscountValue != null)
 				{
-					if (update_.DiscountValue <= 0)
+					if (update_.DiscountValue <= 0 || update_.DiscountValue > 100)
 					{
 						returnData.ResponseCode = -1;
-						returnData.ResposeMessage = "DiscountValue không hợp lệ!";
+						returnData.ResposeMessage = "DiscountValue không hợp lệ! Phải nằm trong khoảng 1 - 100.";
 						return returnData;
 					}
 					resultVouchers.DiscountValue = update_.DiscountValue;
 				}
 				if (update_.StartDate != null)
 				{
-					if (update_.StartDate <DateTime.Today || update_.StartDate > resultVouchers.EndDate)
+					if (update_.StartDate < DateTime.Today || update_.StartDate > resultVouchers.EndDate)
 					{
 						returnData.ResponseCode = -1;
 						returnData.ResposeMessage = "StartDate không hợp lệ!";

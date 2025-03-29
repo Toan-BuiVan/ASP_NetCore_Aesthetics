@@ -28,4 +28,17 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public int? DeleteStatus { get; set; }
 		public string? Type { get; set; }
 	}
+
+	public class GetList_Invoice_Out
+	{
+		public int InvoiceID { get; set; }
+		public int? CustomerID { get; set; }
+		public string? CustomerName { get; set; }
+		public string? Code { get; set; }
+		public double? DiscountValue { get; set; }
+		public double? TotalMoney { get; set; }
+		public double? TotalAmountAfterDiscount { get; set; }
+		public string? Status { get; set; }
+		public DateTime? DateCreated { get; set; }
+	}
 }

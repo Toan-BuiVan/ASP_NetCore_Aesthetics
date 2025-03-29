@@ -14,9 +14,9 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 		Task<ResponseInvoice_Loggin> Insert_Invoice(InvoiceRequest insert_);
 
 		//2. Delete Invoice
-		Task<ResponseInvoice_Loggin> Delete_Invoice();
+		Task<ResponseInvoice_Loggin> Delete_Invoice(Delete_Invoice delete_);
 
 		//3. Get list search Invoice
-		Task<ResponseGetListInvoice> GetList_SearchInvoice();
+		Task<ResponseGetListInvoice> GetList_SearchInvoice(GetList_Invoice getList_);
 	}
 }

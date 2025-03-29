@@ -1,4 +1,5 @@
-﻿using Aesthetics.DataAccess.NetCore.DBContext;
+﻿using Aesthetics.DataAccess.NetCore.CheckConditions.Response;
+using Aesthetics.DataAccess.NetCore.DBContext;
 using Aesthetics.DataAccess.NetCore.Repositories.Interface;
 using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
 using Aesthetics.DTO.NetCore.DataObject.LogginModel;
@@ -6,6 +7,8 @@ using Aesthetics.DTO.NetCore.DataObject.Model;
 using Aesthetics.DTO.NetCore.RequestData;
 using Aesthetics.DTO.NetCore.ResponseInvoice_Loggin;
 using BE_102024.DataAces.NetCore.Dapper;
+using Dapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -40,6 +43,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 
 		public async Task<ResponseInvoice_Loggin> Insert_Invoice(InvoiceRequest insert_)
 		{
+			//Tổng giá trị đơn hàng trước khi áp dụng voucher
+			double totalMoney = 0;
 			var returnData = new ResponseInvoice_Loggin();
 			var invoiceOut_Loggin = new List<Invoice_Loggin_Ouput>();
 			var invoiceDetailOut_Loggin = new List<InvoiceDetail_Loggin_Ouput>();
@@ -49,7 +54,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				Users empployee = null;
 				Vouchers vouchers = null;
 				var customer = await _userRepository.GetUserByUserID(insert_.CustomerID);
-				
+
+				//1. Kiểm tra employee
 				if (insert_.EmployeeID != null)
 				{
 					empployee = await _userRepository.GetUserByUserID(insert_.EmployeeID);
@@ -60,12 +66,43 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						return returnData;
 					}
 				}
+				//2. Kiểm tra Customer
 				if (customer == null)
 				{
 					returnData.ResponseCode = -1;
 					returnData.ResposeMessage = "CustomerID không tồn tại!";
 					return returnData;
 				}
+
+				//3. Kiểm tra danh sách đầu vào của Product & Services
+				if (insert_.ProductIDs == null && insert_.ServicesIDs == null)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "Vui lòng chọn ít nhất 1 Product || Servicess!";
+					return returnData;
+				}
+
+				//4. Tính tổng giá trị đơn hàng
+				if (insert_.ProductIDs != null)
+				{
+					for (int i = 0; i < insert_.ProductIDs.Count; i++)
+					{
+						var product = await _productsRepository.GetProductsByProductID(insert_.ProductIDs[i]);
+						if (product == null) continue;
+						totalMoney += insert_.QuantityProduct[i] * product.SellingPrice ?? 0;
+					}
+				}
+				if (insert_.ServicesIDs != null)
+				{
+					for (int i = 0; i < insert_.ServicesIDs.Count; i++)
+					{
+						var service = await _servicessRepository.GetServicessByServicesID(insert_.ServicesIDs[i]);
+						if (service == null) continue;
+						totalMoney += insert_.QuantityServices[i] * service.PriceService ?? 0;
+					}
+				}
+
+				//5. Kiểm tra VouchersID
 				if (insert_.VoucherID != null)
 				{
 					vouchers = await _vouchersRepository.GetVouchersByVouchersID(insert_.VoucherID ?? 0);
@@ -75,13 +112,20 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						returnData.ResposeMessage = "VoucherID không tồn tại!";
 						return returnData;
 					}
+					if (vouchers.StartDate < DateTime.Now)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Voucher đã hết hạn!";
+						return returnData;
+					}
+					if (totalMoney < vouchers.MinimumOrderValue)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = $"Voucher chỉ áp dụng cho đơn hàng tối thiểu {vouchers.MinimumOrderValue}!";
+						return returnData;
+					}
 				}
-				if (insert_.ProductIDs == null && insert_.ServicesIDs == null)
-				{
-					returnData.ResponseCode = -1;
-					returnData.ResposeMessage = "Vui lòng chọn ít nhất 1 Product || Servicess!";
-					return returnData;
-				}
+
 				//1. Tạo hóa đơn
 				var newInvoice = new Invoice
 				{
@@ -103,7 +147,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					EmployeeID = newInvoice.EmployeeID,
 					CustomerID = newInvoice.CustomerID,
 					VoucherID = newInvoice.VoucherID,
-					Code = vouchers?.Code ,
+					Code = vouchers?.Code,
 					DiscountValue = vouchers?.DiscountValue,
 					DateCreated = newInvoice.DateCreated,
 					Status = newInvoice.Status,
@@ -121,6 +165,10 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						var productID = insert_.ProductIDs[i];
 						var quantityProduct = insert_.QuantityProduct[i];
 						var product = await _productsRepository.GetProductsByProductID(productID);
+
+						var servicesID = insert_.ServicesIDs[i];
+						var quantityService = insert_.QuantityServices[i];
+						var service = await _servicessRepository.GetServicessByServicesID(servicesID);
 						if (product == null)
 						{
 							returnData.ResponseCode = -1;
@@ -133,10 +181,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 							returnData.ResposeMessage = $"Quantity ProductID: {productID} không hợp lệ!";
 							return returnData;
 						}
-
-						var servicesID = insert_.ServicesIDs[i];
-						var quantityService = insert_.QuantityServices[i];
-						var service = await _servicessRepository.GetServicessByServicesID(servicesID);
 						if (service == null)
 						{
 							returnData.ResponseCode = -1;
@@ -167,7 +211,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 							PriceService = service.PriceService,
 							TotalQuantityProduct = quantityProduct,
 							TotalQuantityService = quantityService,
-							TotalMoney = (quantityProduct * product.SellingPrice) 
+							TotalMoney = (quantityProduct * product.SellingPrice)
 										+ (quantityService * service.PriceService),
 							DeleteStatus = 1,
 							Status = newInvoice.Status,
@@ -487,14 +531,164 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 		}
 
-		public Task<ResponseInvoice_Loggin> Delete_Invoice()
+		public async Task<ResponseInvoice_Loggin> Delete_Invoice(Delete_Invoice delete_)
 		{
-			throw new NotImplementedException();
+			var returnData = new ResponseInvoice_Loggin();
+			var invoiceOut_Loggin = new List<Invoice_Loggin_Ouput>();
+			var invoiceDetailOut_Loggin = new List<InvoiceDetail_Loggin_Ouput>();
+			using var transaction = await _context.Database.BeginTransactionAsync();
+			try
+			{
+				var invoice = await _context.Invoice
+					.Include(s => s.InvoiceDetails)
+					.AsSplitQuery()
+					.Where(s => s.InvoiceID == delete_.InvoiceID && s.DeleteStatus == 1)
+					.FirstOrDefaultAsync();
+				if (invoice != null)
+				{
+					//1.Xóa Ivoice
+					invoice.DeleteStatus = 0;
+					invoiceOut_Loggin.Add(new Invoice_Loggin_Ouput
+					{
+						InvoiceID = invoice.InvoiceID,
+						EmployeeID = invoice.EmployeeID,
+						CustomerID = invoice.CustomerID,
+						VoucherID = invoice.VoucherID,
+						Code = invoice?.Code,
+						DiscountValue = invoice?.DiscountValue,
+						DateCreated = invoice.DateCreated,
+						Status = invoice.Status,
+						DeleteStatus = invoice.DeleteStatus,
+						Type = invoice.Type,
+					});
+
+
+					//2. Xóa InvoiceDetail
+					var invoiceDetail = invoice.InvoiceDetails
+						.Where(s => s.InvoiceID == invoice.InvoiceID && s.DeleteStatus == 1);
+					if (invoiceDetail != null)
+					{
+						foreach(var item in invoiceDetail)
+						{
+							item.DeleteStatus = 0;
+							invoiceDetailOut_Loggin.Add(new InvoiceDetail_Loggin_Ouput
+							{
+								InvoiceDetailID = item.InvoiceDetailID,
+								InvoiceID = item.InvoiceID,
+								CustomerID = item.CustomerID,
+								CustomerName = item.CustomerName,
+								EmployeeID = item.EmployeeID,
+								EmployeeName = item.EmployeeName,
+								ProductID = item.ProductID,
+								ProductName = item.ProductName,
+								ServiceID = item.ServiceID,
+								ServiceName = item.ServiceName,
+								VoucherID = item.VoucherID ?? 0,
+								Code = item.Code,
+								DiscountValue = item.DiscountValue,
+								PriceProduct = item.PriceProduct,
+								PriceService = item.PriceService,
+								TotalQuantityService = item.TotalQuantityService,
+								TotalQuantityProduct = item.TotalQuantityProduct,
+								TotalMoney = item.TotalMoney,
+								DeleteStatus = item.DeleteStatus,
+								Status = item.Status,
+								Type = item.Type,
+							});
+						}
+					}
+					await transaction.CommitAsync();
+					await _context.SaveChangesAsync();
+					returnData.ResponseCode = 1;
+					returnData.ResposeMessage = $"Delete_Invoice thành công!";
+					returnData.invoiceOut_Loggin = invoiceOut_Loggin;
+					returnData.invoiceDetailOut_Loggin = invoiceDetailOut_Loggin;
+					return returnData;
+				}
+				returnData.ResponseCode = -1;
+				returnData.ResposeMessage = "InvoiceID không hợp lệ!";
+				return returnData;
+			}
+			catch(Exception ex)
+			{
+				await transaction.RollbackAsync();
+				throw new Exception($"Error in Delete_Invoice Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+			}
 		}
 
-		public Task<ResponseGetListInvoice> GetList_SearchInvoice()
+		public async Task<ResponseGetListInvoice> GetList_SearchInvoice(GetList_Invoice getList_)
 		{
-			throw new NotImplementedException();
+			var returnData = new ResponseGetListInvoice();
+			try
+			{
+				if (getList_.InvoiceID != null)
+				{
+					var result = await _context.Invoice
+						.Where(s => s.InvoiceID == getList_.InvoiceID && s.DeleteStatus == 1)
+						.FirstOrDefaultAsync();
+					if (result == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceID không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (getList_.EmployeeID != null)
+				{
+					var result = await _context.Invoice
+						.Where(s => s.EmployeeID == getList_.EmployeeID && s.DeleteStatus == 1)
+						.FirstOrDefaultAsync();
+					if (result == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "EmployeeID chưa có hóa đơn nào!";
+						return returnData;
+					}
+					if (await _userRepository.GetUserByUserID(getList_.EmployeeID) == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "EmployeeID không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (getList_.CustomerID != null)
+				{
+					var result = await _context.Invoice
+						.Where(s => s.CustomerID == getList_.CustomerID && s.DeleteStatus == 1)
+						.FirstOrDefaultAsync();
+					if (result == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "CustomerID chưa có hóa đơn nào!";
+						return returnData;
+					}
+					if (await _userRepository.GetUserByUserID(getList_.CustomerID) == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "CustomerID không hợp lệ!";
+						return returnData;
+					}
+				}
+				var parameters = new DynamicParameters();
+				parameters.Add("@InvoiceID", getList_.InvoiceID ?? null);
+				parameters.Add("@EmployeeID", getList_.EmployeeID ?? null);
+				parameters.Add("@CustomerID", getList_.CustomerID ?? null);
+				var _listInvoice = await DbConnection.QueryAsync<GetList_Invoice_Out>("GetList_SearchInvoice", parameters);
+				if (_listInvoice != null && _listInvoice.Any())
+				{
+					returnData.ResponseCode = 1;
+					returnData.ResposeMessage = "Lấy danh sách Invoice thành công!";
+					returnData.Data = _listInvoice.ToList();
+					return returnData;
+				}
+				returnData.ResponseCode = 0;
+				returnData.ResposeMessage = "Không tìm thấy Invoice nào.";
+				return returnData;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in GetList_SearchInvoice Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+			}
 		}
 	}
 }
