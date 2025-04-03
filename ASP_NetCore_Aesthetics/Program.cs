@@ -6,8 +6,11 @@ using Aesthetics.DataAccess.NetCore.Repositories.Impliment;
 using Aesthetics.DataAccess.NetCore.Repositories.Interface;
 using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
 using Aesthetics.DTO.NetCore.DataObject;
+using Aesthetics.DTO.NetCore.DataObject.Model.MoMo;
 using ASP_NetCore_Aesthetics.Filter;
-using ASP_NetCore_Aesthetics.Loggin;
+using ASP_NetCore_Aesthetics.Services.IoggerServices;
+using ASP_NetCore_Aesthetics.Services.MomoServices;
+using ASP_NetCore_Aesthetics.Services.VnPayServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +22,16 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
+//Connect API MoMo
+builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
+builder.Services.AddScoped<IMomoService, MomoService>();
+
+
 // Add services to the container.
 builder.Services.AddDbContext<DB_Context>(options =>
 			   options.UseSqlServer(configuration.GetConnectionString("Aesthetics_ConnString")));
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
 	options.TokenValidationParameters = new TokenValidationParameters
@@ -56,6 +66,7 @@ builder.Services.AddTransient<IWalletsRepository, WalletsRepository>();
 builder.Services.AddTransient<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<Filter_CheckToken>();
 builder.Services.AddTransient<ILoggerManager, LoggerManager>();
+builder.Services.AddScoped<IVnPayService, VnPayService>(); //Connect VNPay API
 builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configuration["RedisCacheUrl"]; });
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
 

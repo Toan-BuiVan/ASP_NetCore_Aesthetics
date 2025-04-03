@@ -67,6 +67,12 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					returnData.ResposeMessage = "MinimumOrderValue không hợp lệ!";
 					return returnData;
 				}
+				if (insert_.MaxValue <= 0)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "MinimumOrderValue không hợp lệ!";
+					return returnData;
+				}
 				if (!Validation.CheckString(insert_.RankMember) || !Validation.CheckXSSInput(insert_.RankMember))
 				{
 					returnData.ResponseCode = -1;
@@ -90,6 +96,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					StartDate = insert_.StartDate,
 					EndDate = insert_.EndDate,
 					MinimumOrderValue = insert_.MinimumOrderValue,
+					MaxValue = insert_.MaxValue,
 					RankMember = insert_.RankMember,
 					IsActive = 1
 				};
@@ -105,6 +112,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					StartDate = newVouchers.StartDate,
 					EndDate = newVouchers.EndDate,
 					MinimumOrderValue = newVouchers.MinimumOrderValue,
+					MaxValue = newVouchers.MaxValue,
 					RankMember = newVouchers.RankMember,
 					IsActive = newVouchers.IsActive,
 				});
@@ -187,6 +195,17 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					}
 					resultVouchers.MinimumOrderValue = update_.MinimumOrderValue;
 				}
+
+				if (update_.MaxValue != null)
+				{
+					if (update_.MaxValue <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "MaxValue không hợp lệ!";
+						return returnData;
+					}
+					resultVouchers.MaxValue = update_.MaxValue;
+				}
 				if (update_.RankMember != null)
 				{
 					if (!Validation.CheckString(update_.RankMember) || !Validation.CheckXSSInput(update_.RankMember))
@@ -249,6 +268,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						StartDate = findVouchers.StartDate,
 						EndDate = findVouchers.EndDate,
 						MinimumOrderValue = findVouchers.MinimumOrderValue,
+						MaxValue = findVouchers.MaxValue,
 						RankMember = findVouchers.RankMember,
 						IsActive = findVouchers.IsActive,
 					});

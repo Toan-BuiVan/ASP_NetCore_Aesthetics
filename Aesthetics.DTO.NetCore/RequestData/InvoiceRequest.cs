@@ -26,4 +26,9 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public int? EmployeeID { get; set; }
 		public int? InvoiceID { get; set; }
 	}
+
+	public class GetList_InvoiceDetail
+	{
+		public int? InvoiceID { get; set; }
+	}
 }

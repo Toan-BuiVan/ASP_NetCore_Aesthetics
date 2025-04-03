@@ -481,6 +481,22 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "GetList_SearchInvoiceDetail",
+    "RelativePath": "api/Invoice/GetList_SearchInvoiceDetail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_InvoiceDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
     "Method": "Insert_Invoice",
     "RelativePath": "api/Invoice/Insert_Invoice",
     "HttpMethod": "POST",
@@ -490,6 +506,58 @@
       {
         "Name": "insert_",
         "Type": "Aesthetics.DTO.NetCore.RequestData.InvoiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "PaymentCallbackMomo",
+    "RelativePath": "api/Payment/CallBackMomo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "PaymentCallbackVnpay",
+    "RelativePath": "api/Payment/CallBackVnPay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "CreatePaymentUrlMomo",
+    "RelativePath": "api/Payment/CreatePaymentUrlMomo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Aesthetics.DTO.NetCore.DataObject.Model.MoMo.OrderInfoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "CreatePaymentUrlVnpay",
+    "RelativePath": "api/Payment/CreatePaymentUrlVnpay",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Aesthetics.DTO.NetCore.DataObject.Model.VnPay.PaymentInformationModel",
         "IsRequired": true
       }
     ],

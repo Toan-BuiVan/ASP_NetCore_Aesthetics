@@ -2,7 +2,7 @@
 using Aesthetics.DataAccess.NetCore.Repositories.Interface;
 using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
 using Aesthetics.DTO.NetCore.RequestData;
-using ASP_NetCore_Aesthetics.Loggin;
+using ASP_NetCore_Aesthetics.Services.IoggerServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
@@ -38,11 +38,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Insert_Invoice Response data: " + JsonConvert.SerializeObject(responseData.invoiceOut_Loggin));
 				//3. Lưu log data Insert_InvoiceDetail response
 				_loggerManager.LogInfo("Insert_InvoiceDetail Response data: " + JsonConvert.SerializeObject(responseData.invoiceDetailOut_Loggin));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
+				
 				return Ok(responseData);
 			}
 			catch (Exception ex)
@@ -66,11 +62,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Delete_Invoice Response data: " + JsonConvert.SerializeObject(responseData.invoiceOut_Loggin));
 				//3. Lưu log data Delete_InvoiceDetail response
 				_loggerManager.LogInfo("Delete_InvoiceDetail Response data: " + JsonConvert.SerializeObject(responseData.invoiceDetailOut_Loggin));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
+				
 				return Ok(responseData);
 			}
 			catch (Exception ex)
@@ -90,13 +82,29 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				var responseData = await _invoiceRepository.GetList_SearchInvoice(getList_);
 				//2. Lưu log request
 				_loggerManager.LogInfo("Delete_Invoice Request: " + JsonConvert.SerializeObject(getList_));
-				//3. Lưu log data Delete_Invoice response
+				//3. Lưu log data GetList_SearchInvoice response
 				_loggerManager.LogInfo("GetList_SearchInvoice Response data: " + JsonConvert.SerializeObject(responseData.Data));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
+				return Ok(responseData);
+			}
+			catch (Exception ex)
+			{
+				_loggerManager.LogError("{Error GetList_SearchInvoice} Message: " + ex.Message +
+					"|" + "Stack Trace: " + ex.StackTrace);
+				return Ok(ex.Message);
+			}
+		}
+
+		[HttpGet("GetList_SearchInvoiceDetail")]
+		public async Task<IActionResult> GetList_SearchInvoiceDetail(GetList_InvoiceDetail getList_)
+		{
+			try
+			{
+				//1.GetList_SearchInvoiceDetail 
+				var responseData = await _invoiceRepository.GetList_SearchInvoiceDetail(getList_);
+				//2. Lưu log request
+				_loggerManager.LogInfo("Delete_Invoice Request: " + JsonConvert.SerializeObject(getList_));
+				//3. Lưu log data GetList_SearchInvoiceDetail response
+				_loggerManager.LogInfo("GetList_SearchInvoice Response data: " + JsonConvert.SerializeObject(responseData.Data));
 				return Ok(responseData);
 			}
 			catch (Exception ex)

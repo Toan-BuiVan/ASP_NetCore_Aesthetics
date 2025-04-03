@@ -25,7 +25,6 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
         public string? ReferralCode { get; set; }
         public string? RefeshToken { get; set; }
         public int? DeleteStatus { get; set; }
-        public double? Moneyy { get; set; }
         public DateTime? TokenExprired { get; set; }
         public int? RatingPoints { get; set; } 
         public string? RankMember { get; set; }

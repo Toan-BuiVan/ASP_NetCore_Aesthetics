@@ -146,7 +146,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					TypePerson = "Customer",
 					AccumulatedPoints = 0,
 					DeleteStatus = 1,
-					Moneyy = 0,
 					ReferralCode = ReferralCode_User,
 					RatingPoints = 0,
 					RankMember = "Bronze"
@@ -163,7 +162,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					AccumulatedPoints = newUsers.AccumulatedPoints,
 					ReferralCode = newUsers.ReferralCode,
 					DeleteStatus = newUsers.DeleteStatus,
-					Moneyy = newUsers.Moneyy,
 					RatingPoints = newUsers.RatingPoints,
 					RankMember = newUsers.RankMember
 				});
@@ -206,6 +204,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				throw new Exception($"Error CreateAccount_Customer Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
+
 		public async Task<ResponseUser_InsertLoggin> CreateAccount_Employee(User_CreateAccount account)
 		{
 			var returnData = new ResponseUser_InsertLoggin();
@@ -269,7 +268,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					TypePerson = "Employee",
 					AccumulatedPoints = 0,
 					DeleteStatus = 1,
-					Moneyy = 0,
 					ReferralCode = ReferralCode_User,
 					RatingPoints = 0,
 					RankMember = "Silver"
@@ -286,7 +284,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					AccumulatedPoints = newUsers.AccumulatedPoints,
 					ReferralCode = newUsers.ReferralCode,
 					DeleteStatus = newUsers.DeleteStatus,
-					Moneyy = newUsers.Moneyy,
 					RatingPoints = newUsers.RatingPoints,
 					RankMember = newUsers.RankMember
 				});
@@ -329,6 +326,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				throw new Exception($"Error CreateAccount_Staff Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
+
 		public async Task<ResponseUser_InsertLoggin> CreateAccount_Doctor(User_CreateAccount account)
 		{
 			var returnData = new ResponseUser_InsertLoggin();
@@ -392,7 +390,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					TypePerson = "Doctor",
 					AccumulatedPoints = 0,
 					DeleteStatus = 1,
-					Moneyy = 0,
 					ReferralCode = ReferralCode_User,
 					RatingPoints = 0,
 					RankMember = "Gold"
@@ -409,7 +406,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					AccumulatedPoints = newUsers.AccumulatedPoints,
 					ReferralCode = newUsers.ReferralCode,
 					DeleteStatus = newUsers.DeleteStatus,
-					Moneyy = newUsers.Moneyy,
 					RatingPoints = newUsers.RatingPoints,
 					RankMember = newUsers.RankMember
 				});
@@ -452,6 +448,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				throw new Exception($"Error CreateAccount_Doctor Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
+
 		public async Task<ResponseUser_InsertLoggin> CreateAccount_Admin(User_CreateAccount account)
 		{
 			var returnData = new ResponseUser_InsertLoggin();
@@ -515,7 +512,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					TypePerson = "Admin",
 					AccumulatedPoints = 0,
 					DeleteStatus = 1,
-					Moneyy = 0,
 					ReferralCode = ReferralCode_User,
 					RatingPoints = 0,
 					RankMember = "Diamond"
@@ -532,7 +528,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					AccumulatedPoints = newUsers.AccumulatedPoints,
 					ReferralCode = newUsers.ReferralCode,
 					DeleteStatus = newUsers.DeleteStatus,
-					Moneyy = newUsers.Moneyy,
 					RatingPoints = newUsers.RatingPoints,
 					RankMember = newUsers.RankMember
 				});
@@ -729,7 +724,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						ReferralCode = user.ReferralCode,
 						RefeshToken = user.RefeshToken ?? null,
 						DeleteStatus = user.DeleteStatus,
-						Moneyy = user.Moneyy,
 						TokenExprired = user.TokenExprired ?? null,
 						RatingPoints = user.RatingPoints,
 						RankMember = user.RankMember

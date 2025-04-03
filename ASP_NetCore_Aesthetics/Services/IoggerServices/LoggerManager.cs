@@ -1,6 +1,6 @@
 ﻿using NLog;
 
-namespace ASP_NetCore_Aesthetics.Loggin
+namespace ASP_NetCore_Aesthetics.Services.IoggerServices
 {
 	public class LoggerManager : ILoggerManager
 	{

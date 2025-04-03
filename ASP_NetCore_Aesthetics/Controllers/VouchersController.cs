@@ -2,7 +2,7 @@
 using Aesthetics.DTO.NetCore.DataObject.LogginModel;
 using Aesthetics.DTO.NetCore.DataObject.Model;
 using Aesthetics.DTO.NetCore.RequestData;
-using ASP_NetCore_Aesthetics.Loggin;
+using ASP_NetCore_Aesthetics.Services.IoggerServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;

@@ -1,7 +1,7 @@
 ﻿using Aesthetics.DataAccess.NetCore.Repositories.Implement;
 using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
 using Aesthetics.DTO.NetCore.RequestData;
-using ASP_NetCore_Aesthetics.Loggin;
+using ASP_NetCore_Aesthetics.Services.IoggerServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;

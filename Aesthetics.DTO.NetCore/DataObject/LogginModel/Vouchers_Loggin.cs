@@ -16,6 +16,7 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public DateTime? StartDate { get; set; }
 		public DateTime? EndDate { get; set; }
 		public double? MinimumOrderValue { get; set; }
+		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
 		public int? IsActive { get; set; }
 	}

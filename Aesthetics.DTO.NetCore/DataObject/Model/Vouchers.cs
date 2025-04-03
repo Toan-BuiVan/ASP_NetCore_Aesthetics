@@ -18,7 +18,8 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public double? MinimumOrderValue { get; set; }
-        public string? RankMember { get; set; }
+		public double? MaxValue { get; set; }
+		public string? RankMember { get; set; }
         public int? IsActive { get; set; }
 		public Invoice Invoice { get; set; }
 		public InvoiceDetail InvoiceDetails { get; set; }

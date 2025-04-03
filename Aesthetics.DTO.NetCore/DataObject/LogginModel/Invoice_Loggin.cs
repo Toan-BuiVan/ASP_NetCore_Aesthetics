@@ -23,6 +23,7 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public int? VoucherID { get; set; }
 		public string? Code { get; set; }
 		public double? DiscountValue { get; set; }
+		public double? TotalMoney { get; set; }
 		public DateTime? DateCreated { get; set; }
 		public string? Status { get; set; }
 		public int? DeleteStatus { get; set; }
@@ -40,5 +41,20 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public double? TotalAmountAfterDiscount { get; set; }
 		public string? Status { get; set; }
 		public DateTime? DateCreated { get; set; }
+	}
+
+	public class GetList_InvoiceDetail_Out
+	{
+		public string? CustomerName { get; set; }
+		public string? ProductName { get; set; }
+		public double? PriceProduct { get; set; }
+		public int? TotalQuantityProduct { get; set; }
+		public string? ServiceName { get; set; }
+		public double? PriceService { get; set; }
+		public int? TotalQuantityService { get; set; }
+		public string? Code { get; set; }
+		public double? DiscountValue { get; set; }
+		public double? TotalMoney { get; set; }
+		public string? Status { get; set; }
 	}
 }

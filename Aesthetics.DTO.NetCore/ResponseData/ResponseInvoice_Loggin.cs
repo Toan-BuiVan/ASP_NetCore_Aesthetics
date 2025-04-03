@@ -17,4 +17,9 @@ namespace Aesthetics.DTO.NetCore.ResponseInvoice_Loggin
 	{
 		public List<GetList_Invoice_Out>? Data { get; set; }
 	}
+
+	public class ResponseGetListInvoiceDetail : ResponseData
+	{
+		public List<GetList_InvoiceDetail_Out>? Data { get; set; }
+	}
 }

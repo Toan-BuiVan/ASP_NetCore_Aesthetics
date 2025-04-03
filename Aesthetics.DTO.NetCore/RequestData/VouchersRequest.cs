@@ -13,6 +13,7 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public DateTime? StartDate { get; set; }
 		public DateTime? EndDate { get; set; }
 		public double? MinimumOrderValue { get; set; }
+		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
 		public string? VoucherImage { get; set; }
 	}
@@ -26,6 +27,7 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public DateTime? StartDate { get; set; }
 		public DateTime? EndDate { get; set; }
 		public double? MinimumOrderValue { get; set; }
+		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
 	}
 

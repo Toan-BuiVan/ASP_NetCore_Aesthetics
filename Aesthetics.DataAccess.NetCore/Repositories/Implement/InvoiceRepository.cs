@@ -127,6 +127,10 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				}
 
 				//1. Tạo hóa đơn
+				var discount = vouchers?.DiscountValue ?? 0; 
+				var maxDiscountValue = vouchers?.MaxValue ?? 0;
+				var totalMonyVoucher = totalMoney * (discount / 100);
+				var finalDiscount = totalMonyVoucher > maxDiscountValue ? maxDiscountValue : totalMonyVoucher;
 				var newInvoice = new Invoice
 				{
 					EmployeeID = empployee?.UserID,
@@ -134,6 +138,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					VoucherID = vouchers?.VoucherID,
 					Code = vouchers?.Code,
 					DiscountValue = vouchers?.DiscountValue,
+					TotalMoney = totalMoney - finalDiscount,
 					DateCreated = DateTime.Now,
 					Status = "Pending",
 					DeleteStatus = 1,
@@ -149,6 +154,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					VoucherID = newInvoice.VoucherID,
 					Code = vouchers?.Code,
 					DiscountValue = vouchers?.DiscountValue,
+					TotalMoney = newInvoice.TotalMoney,
 					DateCreated = newInvoice.DateCreated,
 					Status = newInvoice.Status,
 					DeleteStatus = newInvoice.DeleteStatus,
@@ -688,6 +694,43 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			catch (Exception ex)
 			{
 				throw new Exception($"Error in GetList_SearchInvoice Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+			}
+		}
+
+		public async Task<ResponseGetListInvoiceDetail> GetList_SearchInvoiceDetail(GetList_InvoiceDetail getList_)
+		{
+			var returnData = new ResponseGetListInvoiceDetail();
+			try
+			{
+				if (getList_.InvoiceID != null)
+				{
+					var result = await _context.Invoice
+						.Where(s => s.InvoiceID == getList_.InvoiceID && s.DeleteStatus == 1)
+						.FirstOrDefaultAsync();
+					if (result == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceID không hợp lệ!";
+						return returnData;
+					}
+				}
+				var parameters = new DynamicParameters();
+				parameters.Add("@InvoiceID", getList_.InvoiceID ?? null);
+				var _listInvoice = await DbConnection.QueryAsync<GetList_InvoiceDetail_Out>("GetList_SearchInvoiceDetail", parameters);
+				if (_listInvoice != null && _listInvoice.Any())
+				{
+					returnData.ResponseCode = 1;
+					returnData.ResposeMessage = "Lấy danh sách Invoice thành công!";
+					returnData.Data = _listInvoice.ToList();
+					return returnData;
+				}
+				returnData.ResponseCode = 0;
+				returnData.ResposeMessage = "Không tìm thấy Invoice nào.";
+				return returnData;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in GetList_SearchInvoiceDetail Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 	}

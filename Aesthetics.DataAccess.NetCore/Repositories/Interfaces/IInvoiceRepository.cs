@@ -18,5 +18,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 
 		//3. Get list search Invoice
 		Task<ResponseGetListInvoice> GetList_SearchInvoice(GetList_Invoice getList_);
+
+		//4. Get list search InvoiceDetail
+		Task<ResponseGetListInvoiceDetail> GetList_SearchInvoiceDetail(GetList_InvoiceDetail getList_);
 	}
 }
