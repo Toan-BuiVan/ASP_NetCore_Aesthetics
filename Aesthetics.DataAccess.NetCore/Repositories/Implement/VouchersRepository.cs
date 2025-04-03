@@ -73,6 +73,18 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					returnData.ResposeMessage = "MinimumOrderValue không hợp lệ!";
 					return returnData;
 				}
+				if (insert_.AccumulatedPoints < 0)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "AccumulatedPoints không hợp lệ!";
+					return returnData;
+				}
+				if (insert_.RatingPoints < 0)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "RatingPoints không hợp lệ!";
+					return returnData;
+				}
 				if (!Validation.CheckString(insert_.RankMember) || !Validation.CheckXSSInput(insert_.RankMember))
 				{
 					returnData.ResponseCode = -1;
@@ -98,6 +110,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					MinimumOrderValue = insert_.MinimumOrderValue,
 					MaxValue = insert_.MaxValue,
 					RankMember = insert_.RankMember,
+					RatingPoints = insert_.RatingPoints,
+					AccumulatedPoints = insert_.AccumulatedPoints,
 					IsActive = 1
 				};
 				_context.Vouchers.Add(newVouchers);
@@ -114,6 +128,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					MinimumOrderValue = newVouchers.MinimumOrderValue,
 					MaxValue = newVouchers.MaxValue,
 					RankMember = newVouchers.RankMember,
+					RatingPoints = newVouchers.RatingPoints,
+					AccumulatedPoints = newVouchers.AccumulatedPoints,
 					IsActive = newVouchers.IsActive,
 				});
 				returnData.ResponseCode = 1;
@@ -216,6 +232,26 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					}
 					resultVouchers.RankMember = update_.RankMember;
 				}
+				if (update_.AccumulatedPoints != null)
+				{
+					if (update_.AccumulatedPoints < 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "AccumulatedPoints không hợp lệ!";
+						return returnData;
+					}
+					resultVouchers.AccumulatedPoints = update_.AccumulatedPoints;
+				}
+				if(update_.RatingPoints != null)
+				{
+					if (update_.RatingPoints < 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "RatingPoints không hợp lệ!";
+						return returnData;
+					}
+					resultVouchers.RatingPoints = update_.RatingPoints;
+				}
 				_context.Vouchers.Update(resultVouchers);
 				await _context.SaveChangesAsync();
 				vouchers_Loggins.Add(new Vouchers_Loggin
@@ -229,6 +265,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					EndDate = resultVouchers.EndDate,
 					MinimumOrderValue = resultVouchers.MinimumOrderValue,
 					RankMember = resultVouchers.RankMember,
+					AccumulatedPoints = resultVouchers.AccumulatedPoints,
+					RatingPoints = resultVouchers.RatingPoints,
 					IsActive = resultVouchers.IsActive,
 				});
 				returnData.ResponseCode = 1;

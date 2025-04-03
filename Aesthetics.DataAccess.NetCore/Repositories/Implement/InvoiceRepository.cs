@@ -106,6 +106,13 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				if (insert_.VoucherID != null)
 				{
 					vouchers = await _vouchersRepository.GetVouchersByVouchersID(insert_.VoucherID ?? 0);
+					var wallets = await _context.Wallets.Where(s => s.VoucherID == insert_.VoucherID && s.UserID == insert_.CustomerID).FirstOrDefaultAsync();
+					if (wallets == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = $"Bạn chưa sở hữu VouchersID: {insert_.VoucherID}!";
+						return returnData;
+					}
 					if (vouchers == null)
 					{
 						returnData.ResponseCode = -1;

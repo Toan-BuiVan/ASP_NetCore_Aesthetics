@@ -12,6 +12,13 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public int VoucherID { get; set; }
 	}
 
+	public class RedeemVouchers
+	{
+		public int UserID { get; set; }
+		public int VoucherID { get; set; }
+		public string PointType { get; set; }
+	}
+
 	public class Update_Wallest
 	{
 		public int WalletsID { get; set; }

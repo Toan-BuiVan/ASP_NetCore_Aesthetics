@@ -15,6 +15,8 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public double? MinimumOrderValue { get; set; }
 		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
+		public int? RatingPoints { get; set; }
+		public int? AccumulatedPoints { get; set; }
 		public string? VoucherImage { get; set; }
 	}
 
@@ -29,6 +31,8 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public double? MinimumOrderValue { get; set; }
 		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
+		public int? RatingPoints { get; set; }
+		public int? AccumulatedPoints { get; set; }
 	}
 
 	public class Delete_Vouchers

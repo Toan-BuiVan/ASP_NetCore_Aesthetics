@@ -20,7 +20,9 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
         public double? MinimumOrderValue { get; set; }
 		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
-        public int? IsActive { get; set; }
+		public int? RatingPoints { get; set; }
+		public int? AccumulatedPoints { get; set; }
+		public int? IsActive { get; set; }
 		public Invoice Invoice { get; set; }
 		public InvoiceDetail InvoiceDetails { get; set; }
 		public ICollection<Wallets> Wallets { get; set; }

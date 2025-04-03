@@ -359,5 +359,91 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 		{
 			return await _context.Wallets.Where(s => s.WalletsID == walletId).FirstOrDefaultAsync();
 		}
+
+		public async Task<ResponseWallets> RedeemPointsForVoucher(RedeemVouchers _redeem)
+		{
+			var returnData = new ResponseWallets();
+			var wallets_Loggins = new List<Wallets_Loggin>();
+			try
+			{
+				// 1. Kiểm tra User
+				var user = await _userRepository.GetUserByUserID(_redeem.UserID);
+				if (user == null)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = $"UserID: {_redeem.UserID} không tồn tại!";
+					return returnData;
+				}
+
+				// 2. Kiểm tra Voucher
+				var voucher = await _vouchersRepository.GetVouchersByVouchersID(_redeem.VoucherID);
+				if (voucher == null)
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = $"VoucherID: {_redeem.VoucherID} không tồn tại!";
+					return returnData;
+				}
+
+				// 3. Kiểm tra loại điểm hợp lệ
+				if (string.IsNullOrEmpty(_redeem.PointType) || (_redeem.PointType != "Accumulated" && _redeem.PointType != "Rating"))
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "Vui lòng chọn loại điểm hợp lệ: 'Accumulated' hoặc 'Rating'!";
+					return returnData;
+				}
+
+				// 4. Xử lý đổi điểm theo loại
+				if (_redeem.PointType == "Accumulated")
+				{
+					if (user.AccumulatedPoints < voucher.AccumulatedPoints)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Điểm tích lũy của bạn không đủ!";
+						return returnData;
+					}
+
+					user.AccumulatedPoints -= voucher.AccumulatedPoints;
+				}
+				else if (_redeem.PointType == "Rating")
+				{
+					if (user.RatingPoints < voucher.RatingPoints)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Điểm mua hàng của bạn không đủ!";
+						return returnData;
+					}
+
+					user.RatingPoints -= voucher.RatingPoints;
+				}
+
+				// 5. Tạo ví voucher
+				var newWallets = new Wallets
+				{
+					UserID = _redeem.UserID,
+					VoucherID = _redeem.VoucherID,
+				};
+
+				wallets_Loggins.Add(new Wallets_Loggin
+				{
+					WalletsID = newWallets.WalletsID,
+					UserID = newWallets.UserID,
+					VoucherID = newWallets.VoucherID,
+				});
+				_context.Wallets.Add(newWallets);
+				await _context.SaveChangesAsync();
+
+				_context.Users.Update(user);
+				await _context.SaveChangesAsync();
+
+				returnData.ResponseCode = 1;
+				returnData.ResposeMessage = "Đổi điểm thành công!";
+				returnData.wallets_Loggins = wallets_Loggins;
+				return returnData;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in RedeemPointsForVoucher: {ex.Message}", ex);
+			}
+		}
 	}
 }

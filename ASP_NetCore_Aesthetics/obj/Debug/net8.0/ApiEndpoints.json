@@ -1077,6 +1077,22 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "RedeemPointsForVoucher",
+    "RelativePath": "api/Wallets/RedeemPointsForVoucher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_redeem",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.RedeemVouchers",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
     "Method": "Update_Wallets",
     "RelativePath": "api/Wallets/Update_Wallets",
     "HttpMethod": "POST",

@@ -45,6 +45,27 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 		}
 
+		[HttpPost("RedeemPointsForVoucher")]
+		public async Task<IActionResult> RedeemPointsForVoucher(RedeemVouchers _redeem)
+		{
+			try
+			{
+				//1.RedeemPointsForVoucher 
+				var responseData = await _walletsRepository.RedeemPointsForVoucher(_redeem);
+				//2. Lưu log request
+				_loggerManager.LogInfo("RedeemPointsForVoucher Request: " + JsonConvert.SerializeObject(_redeem));
+				//3. Lưu log data response
+				_loggerManager.LogInfo("RedeemPointsForVoucher Response data: " + JsonConvert.SerializeObject(responseData.wallets_Loggins));
+				return Ok(responseData);
+			}
+			catch (Exception ex)
+			{
+				_loggerManager.LogError("{Error RedeemPointsForVoucher} Message: " + ex.Message +
+					"|" + "Stack Trace: " + ex.StackTrace);
+				return Ok(ex.Message);
+			}
+		}
+
 		[HttpPost("Update_Wallets")]
 		public async Task<IActionResult> Update_Wallets(Update_Wallest update_)
 		{

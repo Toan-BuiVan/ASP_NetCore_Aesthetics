@@ -2013,6 +2013,37 @@
         }
       }
     },
+    "/api/Wallets/RedeemPointsForVoucher": {
+      "post": {
+        "tags": [
+          "Wallets"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVouchers"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVouchers"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemVouchers"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Wallets/Update_Wallets": {
       "post": {
         "tags": [
@@ -2867,6 +2898,24 @@
         },
         "additionalProperties": false
       },
+      "RedeemVouchers": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "voucherID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pointType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ServicessRequest": {
         "type": "object",
         "properties": {
@@ -3155,6 +3204,16 @@
           "rankMember": {
             "type": "string",
             "nullable": true
+          },
+          "ratingPoints": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "accumulatedPoints": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3276,6 +3335,16 @@
           },
           "rankMember": {
             "type": "string",
+            "nullable": true
+          },
+          "ratingPoints": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "accumulatedPoints": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "voucherImage": {

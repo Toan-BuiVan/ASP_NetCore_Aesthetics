@@ -25,5 +25,9 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 
 		//5. Get wallets by walletsID 
 		Task<Wallets> GetWalletsByWalletId(int walletId);
+
+		//6. Đổi điểm thưởng mua hàng dịch vụ - điểm nhập mã giới thiệu lấy voucher
+		Task<ResponseWallets> RedeemPointsForVoucher(RedeemVouchers _redeem);
+
 	}
 }

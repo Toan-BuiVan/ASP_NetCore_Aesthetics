@@ -18,6 +18,8 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public double? MinimumOrderValue { get; set; }
 		public double? MaxValue { get; set; }
 		public string? RankMember { get; set; }
+		public int? RatingPoints { get; set; }
+		public int? AccumulatedPoints { get; set; }
 		public int? IsActive { get; set; }
 	}
 }
