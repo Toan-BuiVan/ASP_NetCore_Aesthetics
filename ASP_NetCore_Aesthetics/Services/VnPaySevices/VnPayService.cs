@@ -1,7 +1,7 @@
 ﻿using Aesthetics.DTO.NetCore.DataObject.Model.VnPay;
-using ASP_NetCore_Aesthetics.Libraries;
+using ASP_NetCore_Aesthetics.Library;
 
-namespace ASP_NetCore_Aesthetics.Services.VnPayServices
+namespace ASP_NetCore_Aesthetics.Services.VnPaySevices
 {
 	public class VnPayService : IVnPayService
 	{
@@ -10,13 +10,14 @@ namespace ASP_NetCore_Aesthetics.Services.VnPayServices
 		{
 			_configuration = configuration;
 		}
+
 		public string CreatePaymentUrl(PaymentInformationModel model, HttpContext context)
 		{
 			var timeZoneById = TimeZoneInfo.FindSystemTimeZoneById(_configuration["TimeZoneId"]);
 			var timeNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZoneById);
 			var tick = DateTime.Now.Ticks.ToString();
 			var pay = new VnPayLibrary();
-			var urlCallBack = _configuration["Vnpay:PaymentBackReturnUrl"];
+			var urlCallBack = _configuration["PaymentCallBack:ReturnUrl"];
 
 			pay.AddRequestData("vnp_Version", _configuration["Vnpay:Version"]);
 			pay.AddRequestData("vnp_Command", _configuration["Vnpay:Command"]);
@@ -26,7 +27,7 @@ namespace ASP_NetCore_Aesthetics.Services.VnPayServices
 			pay.AddRequestData("vnp_CurrCode", _configuration["Vnpay:CurrCode"]);
 			pay.AddRequestData("vnp_IpAddr", pay.GetIpAddress(context));
 			pay.AddRequestData("vnp_Locale", _configuration["Vnpay:Locale"]);
-			pay.AddRequestData("vnp_OrderInfo", $"{model.UserName} {model.OrderDescription} {model.Amount}");
+			pay.AddRequestData("vnp_OrderInfo", $"{model.Name} {model.OrderDescription} {model.Amount}");
 			pay.AddRequestData("vnp_OrderType", model.OrderType);
 			pay.AddRequestData("vnp_ReturnUrl", urlCallBack);
 			pay.AddRequestData("vnp_TxnRef", tick);
@@ -37,8 +38,7 @@ namespace ASP_NetCore_Aesthetics.Services.VnPayServices
 			return paymentUrl;
 		}
 
-
-		public PaymentResponseModel VnPaymentExecute(IQueryCollection collections)
+		public PaymentResponseModel PaymentExecute(IQueryCollection collections)
 		{
 			var pay = new VnPayLibrary();
 			var response = pay.GetFullResponseData(collections, _configuration["Vnpay:HashSecret"]);

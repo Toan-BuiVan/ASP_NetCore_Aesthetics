@@ -1,10 +1,10 @@
 ﻿using Aesthetics.DTO.NetCore.DataObject.Model.VnPay;
 
-namespace ASP_NetCore_Aesthetics.Services.VnPayServices
+namespace ASP_NetCore_Aesthetics.Services.VnPaySevices
 {
 	public interface IVnPayService
 	{
 		string CreatePaymentUrl(PaymentInformationModel model, HttpContext context);
-		PaymentResponseModel VnPaymentExecute(IQueryCollection collections);
+		PaymentResponseModel PaymentExecute(IQueryCollection collections);
 	}
 }

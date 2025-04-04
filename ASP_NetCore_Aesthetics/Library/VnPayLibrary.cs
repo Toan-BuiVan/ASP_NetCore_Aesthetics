@@ -5,12 +5,13 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Globalization;
 
-namespace ASP_NetCore_Aesthetics.Libraries
+namespace ASP_NetCore_Aesthetics.Library
 {
 	public class VnPayLibrary
 	{
 		private readonly SortedList<string, string> _requestData = new SortedList<string, string>(new VnPayCompare());
 		private readonly SortedList<string, string> _responseData = new SortedList<string, string>(new VnPayCompare());
+
 		public PaymentResponseModel GetFullResponseData(IQueryCollection collection, string hashSecret)
 		{
 			var vnPay = new VnPayLibrary();
@@ -30,12 +31,10 @@ namespace ASP_NetCore_Aesthetics.Libraries
 			var checkSignature =
 				vnPay.ValidateSignature(vnpSecureHash, hashSecret); //check Signature
 			if (!checkSignature)
-			{
 				return new PaymentResponseModel()
 				{
 					Success = false
 				};
-			}
 			return new PaymentResponseModel()
 			{
 				Success = true,
@@ -78,6 +77,7 @@ namespace ASP_NetCore_Aesthetics.Libraries
 			return "127.0.0.1";
 		}
 
+
 		public void AddRequestData(string key, string value)
 		{
 			if (!string.IsNullOrEmpty(value))
@@ -85,7 +85,6 @@ namespace ASP_NetCore_Aesthetics.Libraries
 				_requestData.Add(key, value);
 			}
 		}
-
 
 		public void AddResponseData(string key, string value)
 		{
@@ -100,8 +99,6 @@ namespace ASP_NetCore_Aesthetics.Libraries
 		{
 			return _responseData.TryGetValue(key, out var retValue) ? retValue : string.Empty;
 		}
-
-
 		public string CreateRequestUrl(string baseUrl, string vnpHashSecret)
 		{
 			var data = new StringBuilder();
@@ -133,8 +130,6 @@ namespace ASP_NetCore_Aesthetics.Libraries
 			var myChecksum = HmacSha512(secretKey, rspRaw);
 			return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
 		}
-
-
 		private string HmacSha512(string key, string inputData)
 		{
 			var hash = new StringBuilder();
@@ -180,15 +175,16 @@ namespace ASP_NetCore_Aesthetics.Libraries
 			return data.ToString();
 		}
 	}
-}
-public class VnPayCompare : IComparer<string>
-{
-	public int Compare(string x, string y)
+	public class VnPayCompare : IComparer<string>
 	{
-		if (x == y) return 0;
-		if (x == null) return -1;
-		if (y == null) return 1;
-		var vnpCompare = CompareInfo.GetCompareInfo("en-US");
-		return vnpCompare.Compare(x, y, CompareOptions.Ordinal);
+		public int Compare(string x, string y)
+		{
+			if (x == y) return 0;
+			if (x == null) return -1;
+			if (y == null) return 1;
+			var vnpCompare = CompareInfo.GetCompareInfo("en-US");
+			return vnpCompare.Compare(x, y, CompareOptions.Ordinal);
+		}
 	}
+
 }

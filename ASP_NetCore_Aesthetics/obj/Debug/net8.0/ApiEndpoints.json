@@ -513,38 +513,12 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
-    "Method": "PaymentCallbackMomo",
-    "RelativePath": "api/Payment/CallBackMomo",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
     "Method": "PaymentCallbackVnpay",
     "RelativePath": "api/Payment/CallBackVnPay",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
-    "Method": "CreatePaymentUrlMomo",
-    "RelativePath": "api/Payment/CreatePaymentUrlMomo",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "Aesthetics.DTO.NetCore.DataObject.Model.MoMo.OrderInfoModel",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {

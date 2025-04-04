@@ -1040,49 +1040,6 @@
         }
       }
     },
-    "/api/Payment/CreatePaymentUrlMomo": {
-      "post": {
-        "tags": [
-          "Payment"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderInfoModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderInfoModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/OrderInfoModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Payment/CallBackMomo": {
-      "get": {
-        "tags": [
-          "Payment"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/Products/Insert_Products": {
       "post": {
         "tags": [
@@ -2808,28 +2765,6 @@
               "type": "integer",
               "format": "int32"
             },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderInfoModel": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "string",
-            "nullable": true
-          },
-          "amount": {
-            "type": "string",
-            "nullable": true
-          },
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "orderInfo": {
-            "type": "string",
             "nullable": true
           }
         },
