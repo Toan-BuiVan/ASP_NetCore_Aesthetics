@@ -1,0 +1,1110 @@
+[
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
+    "Method": "Check_Token",
+    "RelativePath": "api/Authentication/Check_Token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "BE_102024.DataAces.NetCore.DataOpject.TokenModel.CheckTokenRequestData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
+    "Method": "Login_Account",
+    "RelativePath": "api/Authentication/Login_Account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequestData",
+        "Type": "BE_102024.DataAces.NetCore.DataOpject.RequestData.AccountLoginRequestData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
+    "Method": "LogOut_Account",
+    "RelativePath": "api/Authentication/LogOut_Account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "BE_102024.DataAces.NetCore.DataOpject.TokenModel.TokenLogOutModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
+    "Method": "LogOutAll_Account",
+    "RelativePath": "api/Authentication/LogOutAll_Account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tokenLogOut",
+        "Type": "BE_102024.DataAces.NetCore.DataOpject.TokenModel.TokenLogOutModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
+    "Method": "Refresh_Token",
+    "RelativePath": "api/Authentication/Refresh_Token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tokenModel",
+        "Type": "BE_102024.DataAces.NetCore.DataOpject.TokenModel.TokenModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "Delete_Booking",
+    "RelativePath": "api/Bookings/Delete_Booking",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Booking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "Delete_BookingSer_Assi",
+    "RelativePath": "api/Bookings/Delete_BookingSer_Assi",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Booking_Services",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "GetList_SearchBooking",
+    "RelativePath": "api/Bookings/GetList_SearchBooking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchBooking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "GetList_SearchBooking_Assignment",
+    "RelativePath": "api/Bookings/GetList_SearchBooking_Assignment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchBooking_Assignment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "GetList_SearchBooking_Services",
+    "RelativePath": "api/Bookings/GetList_SearchBooking_Services",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchBooking_Services",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "Insert_Booking",
+    "RelativePath": "api/Bookings/Insert_Booking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.BookingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
+    "Method": "Insert_BookingSer_Assi",
+    "RelativePath": "api/Bookings/Insert_BookingSer_Assi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Insert_Booking_Services",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CartProductController",
+    "Method": "Delete_CartProduct",
+    "RelativePath": "api/CartProduct/Delete_CartProduct",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Cart_ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CartProductController",
+    "Method": "GetList_SearchCartProduct",
+    "RelativePath": "api/CartProduct/GetList_SearchCartProduct",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_SearchCart_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchCart_ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CartProductController",
+    "Method": "Insert_CartProduct",
+    "RelativePath": "api/CartProduct/Insert_CartProduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Cart_ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CartProductController",
+    "Method": "Update_CartProduct",
+    "RelativePath": "api/CartProduct/Update_CartProduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "update_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Cart_ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.Clinic_StaffController",
+    "Method": "Delete_ClinicStaff",
+    "RelativePath": "api/Clinic_Staff/Delete_ClinicStaff",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clinic_Staff",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Clinic_StaffDelete",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.Clinic_StaffController",
+    "Method": "GetList_SearchClinicStaff",
+    "RelativePath": "api/Clinic_Staff/GetList_SearchClinicStaff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Clinic_StaffGetList",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.Clinic_StaffController",
+    "Method": "Insert_ClinicStaff",
+    "RelativePath": "api/Clinic_Staff/Insert_ClinicStaff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clinic_Staff",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Clinic_StaffRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.Clinic_StaffController",
+    "Method": "Update_ClinicStaff",
+    "RelativePath": "api/Clinic_Staff/Update_ClinicStaff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clinic_Staff",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Clinic_StaffUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ClinicController",
+    "Method": "Delete_Clinic",
+    "RelativePath": "api/Clinic/Delete_Clinic",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Clinic",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ClinicController",
+    "Method": "GetList_SearchClinic",
+    "RelativePath": "api/Clinic/GetList_SearchClinic",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_Search",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ClinicController",
+    "Method": "Insert_Clinic",
+    "RelativePath": "api/Clinic/Insert_Clinic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clinic",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ClinicRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ClinicController",
+    "Method": "Update_Clinic",
+    "RelativePath": "api/Clinic/Update_Clinic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "update_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Clinic",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CommentController",
+    "Method": "Delete_Comment",
+    "RelativePath": "api/Comment/Delete_Comment",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_comment",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CommentController",
+    "Method": "GetList_SearchComment",
+    "RelativePath": "api/Comment/GetList_SearchComment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_searchComment",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchCommnet",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CommentController",
+    "Method": "Insert_Comment",
+    "RelativePath": "api/Comment/Insert_Comment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_comment",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.CommnetRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.CommentController",
+    "Method": "Update_Comment",
+    "RelativePath": "api/Comment/Update_Comment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_comment",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "Delete_Invoice",
+    "RelativePath": "api/Invoice/Delete_Invoice",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Invoice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "GetList_SearchInvoice",
+    "RelativePath": "api/Invoice/GetList_SearchInvoice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_Invoice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "GetList_SearchInvoiceDetail",
+    "RelativePath": "api/Invoice/GetList_SearchInvoiceDetail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_InvoiceDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.InvoiceController",
+    "Method": "Insert_Invoice",
+    "RelativePath": "api/Invoice/Insert_Invoice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.InvoiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "PaymentCallPack",
+    "RelativePath": "api/Payment/CallBackMomo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "PaymentCallbackVnpay",
+    "RelativePath": "api/Payment/CallBackVnPay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "CreatePaymentUrl",
+    "RelativePath": "api/Payment/CreatePaymentUrl",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Aesthetics.DTO.NetCore.DataObject.Model.Momo.OrderInfoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.PaymentController",
+    "Method": "CreatePaymentUrlVnpay",
+    "RelativePath": "api/Payment/CreatePaymentUrlVnPay",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Aesthetics.DTO.NetCore.DataObject.Model.VnPay.PaymentInformationModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "Delete_Products",
+    "RelativePath": "api/Products/Delete_Products",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Products",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "ExportProductsToExcel",
+    "RelativePath": "api/Products/ExportProductsToExcel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filePath",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportExcel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "GetList_SearchProducts",
+    "RelativePath": "api/Products/GetList_SearchProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchProducts",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "Insert_Products",
+    "RelativePath": "api/Products/Insert_Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "Update_Products",
+    "RelativePath": "api/Products/Update_Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Products",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "Delete_Servicess",
+    "RelativePath": "api/Servicess/Delete_Servicess",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "servicess",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Servicess",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "ExportServicessToExcel",
+    "RelativePath": "api/Servicess/ExportServicessToExcel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filePath",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportExcel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "GetList_SearchServicess",
+    "RelativePath": "api/Servicess/GetList_SearchServicess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "servicess",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchServicess",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "Insert_Servicess",
+    "RelativePath": "api/Servicess/Insert_Servicess",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "servicess",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ServicessRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "Update_Servicess",
+    "RelativePath": "api/Servicess/Update_Servicess",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "servicess",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Servicess",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.SupplierController",
+    "Method": "Delete_Supplier",
+    "RelativePath": "api/Supplier/Delete_Supplier",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplier",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Supplier",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.SupplierController",
+    "Method": "GetList_SearchSupplier",
+    "RelativePath": "api/Supplier/GetList_SearchSupplier",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplier",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchSupplier",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.SupplierController",
+    "Method": "Insert_Supplier",
+    "RelativePath": "api/Supplier/Insert_Supplier",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplier",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.SupplierRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.SupplierController",
+    "Method": "Update_Supplier",
+    "RelativePath": "api/Supplier/Update_Supplier",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplier",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Supplier",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.TypeProductsServicesController",
+    "Method": "Delete_TypeProductsOfServices",
+    "RelativePath": "api/TypeProductsServices/Delete_TypeProductsOfServices",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_TypeProductsOfServices",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.TypeProductsServicesController",
+    "Method": "GetList_SreachProductsOfServices",
+    "RelativePath": "api/TypeProductsServices/GetList_SreachProductsOfServices",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchTypeProductsOfServices",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.TypeProductsServicesController",
+    "Method": "Insert_TypeProductsOfServices",
+    "RelativePath": "api/TypeProductsServices/Insert_TypeProductsOfServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.TypeProductsOfServicesRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.TypeProductsServicesController",
+    "Method": "Update_TypeProductsOfServices",
+    "RelativePath": "api/TypeProductsServices/Update_TypeProductsOfServices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_TypeProductsOfServices",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "CreateAccount_Admin",
+    "RelativePath": "api/Users/CreateAccount_Admin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_CreateAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "CreateAccount_Customer",
+    "RelativePath": "api/Users/CreateAccount_Customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_CreateAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "CreateAccount_Doctor",
+    "RelativePath": "api/Users/CreateAccount_Doctor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_CreateAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "CreateAccount_Employee",
+    "RelativePath": "api/Users/CreateAccount_Employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_CreateAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "Delete_User",
+    "RelativePath": "api/Users/Delete_User",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_Delete",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "GetList_SearchUser",
+    "RelativePath": "api/Users/GetList_SearchUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.UsersController",
+    "Method": "Update_User",
+    "RelativePath": "api/Users/Update_User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.User_Update",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.VouchersController",
+    "Method": "Delete_Vouchers",
+    "RelativePath": "api/Vouchers/Delete_Vouchers",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Vouchers",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.VouchersController",
+    "Method": "GetList_SearchVouchers",
+    "RelativePath": "api/Vouchers/GetList_SearchVouchers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchVouchers",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.VouchersController",
+    "Method": "Insert_Vouchers",
+    "RelativePath": "api/Vouchers/Insert_Vouchers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.VouchersRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.VouchersController",
+    "Method": "Update_Vouchers",
+    "RelativePath": "api/Vouchers/Update_Vouchers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "update_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Vouchers",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "Delete_Wallets",
+    "RelativePath": "api/Wallets/Delete_Wallets",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Delete_Wallest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "GetList_SearchWallets",
+    "RelativePath": "api/Wallets/GetList_SearchWallets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchWallets",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "Insert_Wallets",
+    "RelativePath": "api/Wallets/Insert_Wallets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.WalletsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "RedeemPointsForVoucher",
+    "RelativePath": "api/Wallets/RedeemPointsForVoucher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_redeem",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.RedeemVouchers",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
+    "Method": "Update_Wallets",
+    "RelativePath": "api/Wallets/Update_Wallets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "update_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Wallest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
