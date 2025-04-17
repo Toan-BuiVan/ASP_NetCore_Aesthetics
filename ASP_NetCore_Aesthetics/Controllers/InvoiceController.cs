@@ -1,8 +1,10 @@
 ﻿using Aesthetics.DataAccess.NetCore.Repositories.Implement;
 using Aesthetics.DataAccess.NetCore.Repositories.Interface;
 using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
+using Aesthetics.DTO.NetCore.DataObject.Model;
 using Aesthetics.DTO.NetCore.RequestData;
 using ASP_NetCore_Aesthetics.Services.IoggerServices;
+using ASP_NetCore_Aesthetics.Services.SenderMail;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
@@ -17,12 +19,16 @@ namespace ASP_NetCore_Aesthetics.Controllers
         private IInvoiceRepository _invoiceRepository;
 		private readonly IDistributedCache _cache;
 		private readonly ILoggerManager _loggerManager;
+		private readonly IEmailSender _emailSender;
+		private IUserRepository _userRepository;
 		public InvoiceController(IInvoiceRepository invoiceRepository, IDistributedCache cache
-			, ILoggerManager loggerManager)
+			, ILoggerManager loggerManager, IEmailSender emailSender, IUserRepository userRepository)
 		{
 			_invoiceRepository = invoiceRepository;
 			_cache = cache;
 			_loggerManager = loggerManager;
+			_emailSender = emailSender;
+			_userRepository = userRepository;
 		}
 
 		[HttpPost("Insert_Invoice")]
@@ -38,7 +44,24 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Insert_Invoice Response data: " + JsonConvert.SerializeObject(responseData.invoiceOut_Loggin));
 				//3. Lưu log data Insert_InvoiceDetail response
 				_loggerManager.LogInfo("Insert_InvoiceDetail Response data: " + JsonConvert.SerializeObject(responseData.invoiceDetailOut_Loggin));
-				
+				//4. Gửi mail thông báo xác nhận đặt hàng thành công
+				var customer = await _userRepository.GetUserByUserID(insert_.CustomerID);
+				if (customer != null)
+				{
+					var emailCustomer = customer.Email;
+					if (emailCustomer != null)
+					{
+						var subject = "Đặt Hàng Thành Công!";
+						var message = $"Kính gửi Quý Khách," +
+									  $"\n\nChúng tôi xin thông báo: Hóa đơn {responseData.InvoiceID} của Quý Khách đã được tạo thành công." +
+									  $"\nTổng số tiền thanh toán: {responseData.TotalMoney:N0} VND." +
+									  $"\n\nChân thành cảm ơn Quý Khách đã tin tưởng và sử dụng dịch vụ của chúng tôi." +
+									  $"\n\nQuý Khách sẽ nhận được thông tin về đơn hàng và quá trình giao hàng trong thời gian sớm nhất." +
+									  $"\n\nTrân trọng!";
+
+						await _emailSender.SendEmailAsync(emailCustomer, subject, message);
+					}
+				}
 				return Ok(responseData);
 			}
 			catch (Exception ex)

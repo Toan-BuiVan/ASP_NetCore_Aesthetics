@@ -3,6 +3,7 @@ using Aesthetics.DataAccess.NetCore.Repositories.Interfaces;
 using Aesthetics.DTO.NetCore.DataObject.Model.Momo;
 using Aesthetics.DTO.NetCore.DataObject.Model.VnPay;
 using ASP_NetCore_Aesthetics.Services.MomoServices;
+using ASP_NetCore_Aesthetics.Services.SenderMail;
 using ASP_NetCore_Aesthetics.Services.VnPaySevices;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Http;
@@ -21,14 +22,17 @@ namespace ASP_NetCore_Aesthetics.Controllers
 		private IUserRepository _userRepository;
 		private IInvoiceRepository _invoiceRepository;
 		private IProductsRepository _productsRepository;
+		private IEmailSender _emailSender;
 		public PaymentController(IVnPayService vnPayService, IMomoService momoService, 
-			IUserRepository userRepository, IInvoiceRepository invoiceRepository, IProductsRepository productsRepository)
+			IUserRepository userRepository, IInvoiceRepository invoiceRepository, 
+			IProductsRepository productsRepository, IEmailSender emailSender)
 		{
 			_vnPayService = vnPayService;
 			_momoService = momoService;
 			_userRepository = userRepository;
 			_invoiceRepository = invoiceRepository;
 			_productsRepository = productsRepository;
+			_emailSender = emailSender;
 		}
 		[HttpPost("CreatePaymentUrlVnPay")]
 		public IActionResult CreatePaymentUrlVnpay(PaymentInformationModel model)
@@ -56,17 +60,22 @@ namespace ASP_NetCore_Aesthetics.Controllers
 					{
 						return BadRequest("Không tìm được OrderID từ vnp_OrderInfo.");
 					}
-					await _invoiceRepository.UpdateStatusInvoice(orderId);
 					var invoice = await _invoiceRepository.GetInvoiceByInvoiceID(orderId);
 					if (invoice != null)
 					{
+						//1. Update trạng thái của háo đơn
+						await _invoiceRepository.UpdateStatusInvoice(orderId);
+						//2. Update RatingPoints của khách hàng
 						await _userRepository.UpdateRatingPoints_Customer(invoice.CustomerID ?? 0);
 						if (invoice.EmployeeID != null)
 						{
+							//3.Nếu hóa đơn bán có tồn tại nhân vên thì update SalesPoints của nhân viên
 							await _userRepository.UpdateSalesPoints(invoice.EmployeeID ?? 0, invoice.TotalMoney ?? 0);
 						}
-						var InvoiceDetail = await _invoiceRepository.InvoiceDetailByInvoiceID(invoice.InvoiceID);
+						//4. Update trạng thái của chi tiết hóa đơn
 						await _invoiceRepository.UpdateStatusInvoiceDetail(invoice.InvoiceID);
+
+						var InvoiceDetail = await _invoiceRepository.InvoiceDetailByInvoiceID(invoice.InvoiceID);
 						if (InvoiceDetail != null && InvoiceDetail.Any())
 						{
 							for (int i = 0; i < InvoiceDetail.Count; i++)
@@ -74,10 +83,26 @@ namespace ASP_NetCore_Aesthetics.Controllers
 								var detail = InvoiceDetail[i];
 								if (detail.ProductID != null)
 								{
+									//5. Update lại số lượng của sản phẩm tại của hàng
 									await _productsRepository.UpdateQuantityPro(detail.ProductID ?? 0, detail.TotalQuantityProduct ?? 0);
 								}
 							}
-
+						}
+						//6. Gửi mail thông báo xác nhận hóa đơn đã thanh toán thành công
+						var customer = await _userRepository.GetUserByUserID(invoice.CustomerID);
+						if (customer != null)
+						{
+							var emailCustomer = customer.Email; 
+							if (emailCustomer != null)
+							{
+								var subject = "Thanh Toán Hóa Đơn Thành Công!";
+								var message = $"Kính gửi Quý Khách," +
+											  $"\n\nChúng tôi xin thông báo: Hóa đơn {orderId}." +
+											  $"\nTổng số tiền thanh toán: {invoice.TotalMoney:N0} VND." +
+											  $"\n\nChân thành cảm ơn Quý Khách đã tin tưởng và sử dụng dịch vụ của chúng tôi." +
+											  $"\n\nTrân trọng!";
+								await _emailSender.SendEmailAsync(emailCustomer, subject, message);
+							}
 						}
 					}
 				}

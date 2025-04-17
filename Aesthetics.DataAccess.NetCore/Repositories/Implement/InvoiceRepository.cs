@@ -67,6 +67,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						return returnData;
 					}
 				}
+
 				//2. Kiểm tra Customer
 				if (customer == null)
 				{
@@ -383,10 +384,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					}
 				}
 
-
-
 				//2.2 Tạo chi tiết hóa đơn khi có Product không có Services
-				// 2.2 Tạo chi tiết hóa đơn khi có Product
 				if (insert_.ProductIDs != null && insert_.ProductIDs.Count >= 1 && (insert_.ServicesIDs == null || insert_.ServicesIDs.Count == 0))
 				{
 					int productCount = insert_.ProductIDs.Count;
@@ -454,7 +452,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						});
 					}
 				}
-				// 2.3 Tạo chi tiết hóa đơn khi có Services
+				
+				// 2.3 Tạo chi tiết hóa đơn khi có Services không có Product
 				if (insert_.ServicesIDs != null && insert_.ServicesIDs.Count > 0 && (insert_.ProductIDs == null || insert_.ProductIDs.Count == 0))
 				{
 					if (insert_.QuantityServices == null || insert_.ServicesIDs.Count != insert_.QuantityServices.Count)
@@ -533,6 +532,8 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 				await transaction.CommitAsync();
 				returnData.ResponseCode = 1;
 				returnData.ResposeMessage = $"Insert_Invoice thành công!";
+				returnData.InvoiceID = newInvoice.InvoiceID;
+				returnData.TotalMoney = totalMoney;
 				returnData.invoiceOut_Loggin = invoiceOut_Loggin;
 				returnData.invoiceDetailOut_Loggin = invoiceDetailOut_Loggin;
 				return returnData;

@@ -60,7 +60,7 @@
             },
             "Dapper": {
               "target": "Package",
-              "version": "[2.1.35, )"
+              "version": "[2.1.66, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

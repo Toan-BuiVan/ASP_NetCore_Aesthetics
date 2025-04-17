@@ -10,6 +10,7 @@ using Aesthetics.DTO.NetCore.DataObject.Model.Momo;
 using ASP_NetCore_Aesthetics.Filter;
 using ASP_NetCore_Aesthetics.Services.IoggerServices;
 using ASP_NetCore_Aesthetics.Services.MomoServices;
+using ASP_NetCore_Aesthetics.Services.SenderMail;
 using ASP_NetCore_Aesthetics.Services.VnPaySevices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +68,7 @@ builder.Services.AddTransient<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<Filter_CheckToken>();
 builder.Services.AddTransient<ILoggerManager, LoggerManager>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configuration["RedisCacheUrl"]; });
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
 
