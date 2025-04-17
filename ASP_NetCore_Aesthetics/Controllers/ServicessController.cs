@@ -79,7 +79,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 		}
 
 		[HttpPost("ExportServicessToExcel")]
-		public async Task<IActionResult> ExportServicessToExcel(ExportExcel filePath)
+		public async Task<IActionResult> ExportServicessToExcel(ExportSevicessExcel filePath)
 		{
 			try
 			{
@@ -92,6 +92,23 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			catch (Exception ex)
 			{
 				_loggerManager.LogError("{Error ExportServicessToExcel} Message: " + ex.Message +
+					"|" + "Stack Trace: " + ex.StackTrace);
+				return Ok(ex.Message);
+			}
+		}
+
+		[HttpGet("GetSortedPagedServicess")]
+		public async Task<IActionResult> GetSortedPagedServicess(SortListSevicess sortList_)
+		{
+			try
+			{
+				var responseData = await _servicess.GetSortedPagedServicess(sortList_);
+				_loggerManager.LogInfo("GetSortedPagedServicess: " + JsonConvert.SerializeObject(sortList_));
+				return Ok(responseData);
+			}
+			catch (Exception ex)
+			{
+				_loggerManager.LogError("{Error GetSortedPagedServicess} Message: " + ex.Message +
 					"|" + "Stack Trace: " + ex.StackTrace);
 				return Ok(ex.Message);
 			}

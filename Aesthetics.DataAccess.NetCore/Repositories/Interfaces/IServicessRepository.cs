@@ -27,11 +27,14 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 		//5.Base Processing Function 64
 		Task<string> BaseProcessingFunction64(string? ServicessImage);
 
+		//5. Sort list Services
+		Task<ResponseServicess_Loggin> GetSortedPagedServicess(SortListSevicess sortList_);
+
 		//6.Function get Servicess by ServicesID 
 		Task<Servicess> GetServicessByServicesID(int? ServicesID);
 
 		//7.Function Export Servicess list to Excel
-		Task<ResponseData> ExportServicessToExcel(ExportExcel filePath);
+		Task<ResponseData> ExportServicessToExcel(ExportSevicessExcel filePath);
 
 		//8. Function get ProductOfServices by ProductsOfServicesID
 		Task<TypeProductsOfServices> GetProductOfServicesByID(int? ProductsOfServicesID);

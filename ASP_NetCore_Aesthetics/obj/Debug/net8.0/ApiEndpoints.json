@@ -589,7 +589,7 @@
     "Parameters": [
       {
         "Name": "filePath",
-        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportExcel",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportProductExcel",
         "IsRequired": true
       }
     ],
@@ -606,6 +606,22 @@
       {
         "Name": "getList_",
         "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchProducts",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ProductsController",
+    "Method": "GetSortedPagedProducts",
+    "RelativePath": "api/Products/GetSortedPagedProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sortList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.SortListProducts",
         "IsRequired": true
       }
     ],
@@ -669,7 +685,7 @@
     "Parameters": [
       {
         "Name": "filePath",
-        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportExcel",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.ExportSevicessExcel",
         "IsRequired": true
       }
     ],
@@ -686,6 +702,22 @@
       {
         "Name": "servicess",
         "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchServicess",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.ServicessController",
+    "Method": "GetSortedPagedServicess",
+    "RelativePath": "api/Servicess/GetSortedPagedServicess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sortList_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.SortListSevicess",
         "IsRequired": true
       }
     ],

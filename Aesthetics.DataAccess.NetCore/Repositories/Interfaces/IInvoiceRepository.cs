@@ -29,7 +29,6 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 		//6. Update status Invoice
 		Task UpdateStatusInvoice(int InvoiceID);
 
-		//7. Get List InvoiceDetail by InvoiceID 
 
 		//7. Update status InvoiceDetail 
 		Task UpdateStatusInvoiceDetail(int InvoiceID);

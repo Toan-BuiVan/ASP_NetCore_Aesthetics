@@ -113,7 +113,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 		}
 
 		[HttpPost("ExportProductsToExcel")]
-		public async Task<IActionResult> ExportProductsToExcel(ExportExcel filePath)
+		public async Task<IActionResult> ExportProductsToExcel(ExportProductExcel filePath)
 		{
 			try
 			{
@@ -131,6 +131,24 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 		}
 
+
+		[HttpGet("GetSortedPagedProducts")]
+		public async Task<IActionResult> GetSortedPagedProducts(SortListProducts sortList_)
+		{
+			try
+			{
+				var responseData = await _productsRepository.GetSortedPagedProducts(sortList_);
+				//2. Lưu log
+				_logger.LogInfo("GetSortedPagedProducts Servicess: " + JsonConvert.SerializeObject(sortList_));
+				return Ok(responseData);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError("{Error GetSortedPagedProducts} Message: " + ex.Message +
+					"|" + "Stack Trace: " + ex.StackTrace);
+				return Ok(ex.Message);
+			}
+		}
 
 		[HttpGet("GetList_SearchProducts")]
 		public async Task<IActionResult> GetList_SearchProducts(GetList_SearchProducts getList_)

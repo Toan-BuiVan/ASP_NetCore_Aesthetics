@@ -34,11 +34,6 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Insert_CartProduct Request: " + JsonConvert.SerializeObject(insert_));
 				//3. Lưu log data response
 				_loggerManager.LogInfo("Insert_CartProduct Response data: " + JsonConvert.SerializeObject(responseData.cartProduct_Loggins));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
 				return Ok(responseData);
 			}
 			catch (Exception ex)
@@ -60,11 +55,6 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Update_CartProduct Request: " + JsonConvert.SerializeObject(update_));
 				//3. Lưu log data response
 				_loggerManager.LogInfo("Update_CartProduct Response data: " + JsonConvert.SerializeObject(responseData.cartProduct_Loggins));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
 				return Ok(responseData);
 			}
 			catch (Exception ex)
@@ -86,11 +76,6 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("Delete_CartProduct Request: " + JsonConvert.SerializeObject(delete_));
 				//3. Lưu log data response
 				_loggerManager.LogInfo("Delete_CartProduct Response data: " + JsonConvert.SerializeObject(responseData.cartProduct_Loggins));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
 				return Ok(responseData);
 			}
 			catch (Exception ex)
@@ -112,11 +97,7 @@ namespace ASP_NetCore_Aesthetics.Controllers
 				_loggerManager.LogInfo("GetList_SearchCartProduct Request: " + JsonConvert.SerializeObject(getList_SearchCart_));
 				//3. Lưu log data response
 				_loggerManager.LogInfo("GetList_SearchCartProduct Response data: " + JsonConvert.SerializeObject(responseData.cartProduct_Loggins));
-				//if (responseData.ResponseCode == 1)
-				//{
-				//	var cacheKey = "GetSupplier_Cache";
-				//	await _cache.RemoveAsync(cacheKey);
-				//}
+	
 				return Ok(responseData);
 			}
 			catch (Exception ex)

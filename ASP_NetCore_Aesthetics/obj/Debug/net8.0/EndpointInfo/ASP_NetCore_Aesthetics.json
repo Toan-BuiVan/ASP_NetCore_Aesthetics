@@ -1185,17 +1185,48 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportProductExcel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportProductExcel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportProductExcel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Products/GetSortedPagedProducts": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListProducts"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListProducts"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListProducts"
               }
             }
           }
@@ -1309,17 +1340,48 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportSevicessExcel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportSevicessExcel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ExportExcel"
+                "$ref": "#/components/schemas/ExportSevicessExcel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Servicess/GetSortedPagedServicess": {
+      "get": {
+        "tags": [
+          "Servicess"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListSevicess"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListSevicess"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortListSevicess"
               }
             }
           }
@@ -2444,9 +2506,50 @@
         },
         "additionalProperties": false
       },
-      "ExportExcel": {
+      "ExportProductExcel": {
         "type": "object",
         "properties": {
+          "productID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productsOfServicesName": {
+            "type": "string",
+            "nullable": true
+          },
+          "supplierName": {
+            "type": "string",
+            "nullable": true
+          },
+          "filePath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExportSevicessExcel": {
+        "type": "object",
+        "properties": {
+          "serviceID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "serviceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productsOfServicesID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "filePath": {
             "type": "string",
             "nullable": true
@@ -2938,6 +3041,66 @@
           "priceService": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SortListProducts": {
+        "type": "object",
+        "properties": {
+          "sortType": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maxPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SortListSevicess": {
+        "type": "object",
+        "properties": {
+          "sortType": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maxPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false

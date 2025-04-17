@@ -37,8 +37,20 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public int? ProductsOfServicesID { get; set; }
 	}
 
-	public class ExportExcel
+	public class ExportSevicessExcel
 	{
+		public int? ServiceID { get; set; }
+		public string? ServiceName { get; set; }
+		public int? ProductsOfServicesID { get; set; }
 		public string filePath { get; set; }
+	}
+
+	public class SortListSevicess
+	{
+		public string? SortType { get; set; }
+		public int? PageIndex { get; set; }
+		public int? PageSize { get; set; }
+		public decimal? MinPrice { get; set; }
+		public decimal? MaxPrice { get; set; }
 	}
 }

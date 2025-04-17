@@ -42,4 +42,22 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public string? ProductsOfServicesName { get; set; }
 		public string? SupplierName { get; set; }
 	}
+
+	public class ExportProductExcel
+	{
+		public int? ProductID { get; set; }
+		public string? ProductName { get; set; }
+		public string? ProductsOfServicesName { get; set; }
+		public string? SupplierName { get; set; }
+		public string filePath { get; set; }
+	}
+
+	public class SortListProducts
+	{
+		public string? SortType { get; set; }
+		public int? PageIndex { get; set; }
+		public int? PageSize { get; set; }
+		public decimal? MinPrice { get; set; }
+		public decimal? MaxPrice { get; set; }
+	}
 }

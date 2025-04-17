@@ -418,20 +418,68 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 		}
 
-		public async Task<ResponseData> ExportServicessToExcel(ExportExcel filePath)
+		public async Task<ResponseData> ExportServicessToExcel(ExportSevicessExcel filePath)
 		{
 			var returnData = new ResponseData();
 			try
 			{
+				if (filePath.ServiceID != null)
+				{
+					if (filePath.ServiceID <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Dữ liệu đầu vào ServiceID không hợp lệ!";
+						return returnData;
+					}
+					if (await GetServicessByServicesID(filePath.ServiceID) == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = $"Danh sách không tồn tại Service: {filePath.ServiceID}!";
+						return returnData;
+					}
+				}
+				if (filePath.ServiceName != null)
+				{
+					if (!Validation.CheckString(filePath.ServiceName))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Dữ liệu đầu vào ServiceName không hợp lệ!";
+						return returnData;
+					}
+					if (!Validation.CheckXSSInput(filePath.ServiceName))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Dữ liệu ServiceName chứa kí tự không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (filePath.ProductsOfServicesID != null)
+				{
+
+					if (filePath.ProductsOfServicesID <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Dữ liệu đầu vào ProductsOfServicesID không hợp lệ!";
+						return returnData;
+					}
+					if (await GetProductOfServicesByID(filePath.ProductsOfServicesID) == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = $"Danh sách Service không tồn tại Service có ProductsOfServicesID: {filePath.ProductsOfServicesID}!";
+						return returnData;
+					}
+				}
 				if (filePath == null || string.IsNullOrWhiteSpace(filePath.filePath))
 				{
 					returnData.ResponseCode = -1;
 					returnData.ResposeMessage = "Đường dẫn file không hợp lệ!";
 					return returnData;
 				}
-
-				var listServicess = await DbConnection.QueryAsync<ResponseServicess>("GetList_SearchServicess", new DynamicParameters());
-
+				var parameters = new DynamicParameters();
+				parameters.Add("@ServiceID", filePath.ServiceID ?? null);
+				parameters.Add("@ServiceName", filePath.ServiceName ?? null);
+				parameters.Add("@ProductsOfServicesID", filePath.ProductsOfServicesID ?? null);
+				var listServicess = await DbConnection.QueryAsync<ResponseServicess>("GetList_SearchServicess", parameters);
 				if (listServicess == null || !listServicess.Any())
 				{
 					returnData.ResponseCode = 0;
@@ -471,6 +519,81 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			catch (Exception ex)
 			{
 				throw new Exception($"Error ExportServicessToExcel Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+			}
+		}
+
+		public async Task<ResponseServicess_Loggin> GetSortedPagedServicess(SortListSevicess sortList_)
+		{
+			var returnData = new ResponseServicess_Loggin();
+			var listData = new List<ResponseServicess>();
+			try
+			{
+				var allowedSortTypes = new List<string> { "PRICE_ASC", "PRICE_DESC", "NAME_ASC", "NAME_DESC" };
+				if (string.IsNullOrEmpty(sortList_.SortType) || !allowedSortTypes.Contains(sortList_.SortType.ToUpper()))
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "SortType không hợp lệ! Chỉ chấp nhận: PRICE_ASC, PRICE_DESC, NAME_ASC, NAME_DESC.";
+					return returnData;
+				}
+
+				if (sortList_.PageIndex != null)
+				{
+					if (sortList_.PageIndex <= 0 || sortList_.PageSize <= 0 || sortList_.PageSize == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "PageIndex || PageSize không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.PageSize != null)
+				{
+					if (sortList_.PageSize <= 0 || sortList_.PageIndex <= 0 || sortList_.PageIndex == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "PageIndex || PageSize không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.MinPrice != null)
+				{
+					if (sortList_.MinPrice <=0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "MinPrice không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.MaxPrice != null)
+				{
+					if (sortList_.MaxPrice <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "MaxPrice không hợp lệ!";
+						return returnData;
+					}
+				}
+				var parameters = new DynamicParameters();
+				parameters.Add("@SortType", sortList_.SortType ?? null);
+				parameters.Add("@PageIndex", sortList_.PageIndex ?? null);
+				parameters.Add("@PageSize", sortList_.PageSize ?? null);
+				parameters.Add("@MinPrice", sortList_.PageSize ?? null);
+				parameters.Add("@MaxPrice", sortList_.PageSize ?? null);
+				var result = await DbConnection.QueryAsync<ResponseServicess>("GetSortedPagedServicess", parameters);
+
+				if (result != null && result.Any())
+				{
+					returnData.ResponseCode = 1;
+					returnData.ResposeMessage = "GetSortedPagedServicess Servicess thành công!";
+					returnData.Data = result.ToList();
+					return returnData;
+				}
+				returnData.ResponseCode = 0;
+				returnData.ResposeMessage = "Không tìm thấy Servicess nào.";
+				return returnData;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error SortListService Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 	}

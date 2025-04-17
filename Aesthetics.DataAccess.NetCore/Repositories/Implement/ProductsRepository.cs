@@ -515,11 +515,47 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			}
 		}
 
-		public async Task<ResponseData> ExportProductsToExcel(ExportExcel filePath)
+		public async Task<ResponseData> ExportProductsToExcel(ExportProductExcel filePath)
 		{
 			var returnData = new ResponseData();
 			try
 			{
+				if (filePath.ProductID != null)
+				{
+					if (filePath.ProductID <= 0 || await GetProductsByProductID(filePath.ProductID) == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "ProductID không hợp lệ || không tồn tại!";
+						return returnData;
+					}
+				}
+				if (filePath.ProductsOfServicesName != null)
+				{
+					if (!Validation.CheckString(filePath.ProductsOfServicesName) || !Validation.CheckXSSInput(filePath.ProductsOfServicesName))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "ProductsOfServicesName không hợp lệ || Chứa kí tự không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (filePath.SupplierName != null)
+				{
+					if (!Validation.CheckString(filePath.SupplierName) || !Validation.CheckXSSInput(filePath.SupplierName))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "SupplierName không hợp lệ || Chứa kí tự không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (filePath.ProductName != null)
+				{
+					if (!Validation.CheckString(filePath.ProductName) || !Validation.CheckXSSInput(filePath.ProductName))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "ProductName không hợp lệ || Chứa kí tự không hợp lệ!";
+						return returnData;
+					}
+				}
 				if (filePath == null || string.IsNullOrWhiteSpace(filePath.filePath))
 				{
 					returnData.ResponseCode = -1;
@@ -536,7 +572,12 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					return returnData;
 				}
 
-				var listProduct = await DbConnection.QueryAsync<ResponseGetListProducts>("GetList_SearchProduct", new DynamicParameters());
+				var parametters = new DynamicParameters();
+				parametters.Add("@ProductID", filePath.ProductID ?? null);
+				parametters.Add("@ProductName", filePath.ProductName ?? null);
+				parametters.Add("@ProductsOfServicesName", filePath.ProductsOfServicesName ?? null);
+				parametters.Add("@SupplierName", filePath.SupplierName ?? null);
+				var listProduct = await DbConnection.QueryAsync<ResponseGetListProducts>("GetList_SearchProduct", parametters);
 
 				if (listProduct != null && listProduct.Any())
 				{
@@ -601,6 +642,80 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 			catch (Exception ex)
 			{
 				throw new Exception($"Error UpdateQuantityPro Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
+			}
+		}
+
+		public async Task<ResponseProducts_LogginGetList> GetSortedPagedProducts(SortListProducts sortList_)
+		{
+			var returnData = new ResponseProducts_LogginGetList();
+			try
+			{
+				var allowedSortTypes = new List<string> { "PRICE_ASC", "PRICE_DESC", "NAME_ASC", "NAME_DESC" };
+				if (string.IsNullOrEmpty(sortList_.SortType) || !allowedSortTypes.Contains(sortList_.SortType.ToUpper()))
+				{
+					returnData.ResponseCode = -1;
+					returnData.ResposeMessage = "SortType không hợp lệ! Chỉ chấp nhận: PRICE_ASC, PRICE_DESC, NAME_ASC, NAME_DESC.";
+					return returnData;
+				}
+				if (sortList_.PageIndex != null)
+				{
+					if (sortList_.PageIndex <= 0 || sortList_.PageSize <= 0 || sortList_.PageSize == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "PageIndex || PageSize không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.PageSize != null)
+				{
+					if (sortList_.PageSize <= 0 || sortList_.PageIndex <= 0 || sortList_.PageIndex == null)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "PageIndex || PageSize không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.MinPrice != null)
+				{
+					if (sortList_.MinPrice <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "MinPrice không hợp lệ!";
+						return returnData;
+					}
+				}
+				if (sortList_.MaxPrice != null)
+				{
+					if (sortList_.MaxPrice <= 0)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "MaxPrice không hợp lệ!";
+						return returnData;
+					}
+				}
+
+				var parameters = new DynamicParameters();
+				parameters.Add("@SortType", sortList_.SortType ?? null);
+				parameters.Add("@PageIndex", sortList_.PageIndex ?? null);
+				parameters.Add("@PageSize", sortList_.PageSize ?? null);
+				parameters.Add("@MinPrice", sortList_.PageSize ?? null);
+				parameters.Add("@MaxPrice", sortList_.PageSize ?? null);
+				var result = await DbConnection.QueryAsync<ResponseGetListProducts>("GetSortedPagedProducts", parameters);
+				if (result != null && result.Any())
+				{
+					returnData.ResponseCode = 1;
+					returnData.ResposeMessage = "GetSortedPagedProducts sản phẩm thành công!";
+					returnData.Data = result.ToList();
+					return returnData;
+				}
+
+				returnData.ResponseCode = 0;
+				returnData.ResposeMessage = "Không tìm thấy sản phẩm nào.";
+				return returnData;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error SortListProduct Message: {ex.Message} | StackTrace: {ex.StackTrace}", ex);
 			}
 		}
 	}

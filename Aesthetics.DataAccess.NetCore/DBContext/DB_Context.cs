@@ -90,33 +90,33 @@ namespace Aesthetics.DataAccess.NetCore.DBContext
 
 			//11.Chỉ định mối quan hệ 1-N của Permission(N) & Functions(1)
 			builder.Entity<Permission>()
-				.HasOne(f => f.Functions)              
-				.WithMany(p => p.Permission)            
-				.HasForeignKey(s => s.FunctionID);     
+				.HasOne(f => f.Functions)
+				.WithMany(p => p.Permission)
+				.HasForeignKey(s => s.FunctionID);
 
 			//12.Chỉ định mối quan hệ N-N của Carts & Products qua bảng trung gian CartProduct
 			builder.Entity<CartProduct>()
-				.HasKey(cp => cp.CartProductID);        
+				.HasKey(cp => cp.CartProductID);
 			builder.Entity<CartProduct>()
-				.HasOne(c => c.Carts)                   
-				.WithMany(cp => cp.CartProducts)        
-				.HasForeignKey(s => s.CartID);          
+				.HasOne(c => c.Carts)
+				.WithMany(cp => cp.CartProducts)
+				.HasForeignKey(s => s.CartID);
 			builder.Entity<CartProduct>()
-				.HasOne(p => p.Products)                
-				.WithMany(cp => cp.CartProducts)        
-				.HasForeignKey(v => v.ProductID);       
+				.HasOne(p => p.Products)
+				.WithMany(cp => cp.CartProducts)
+				.HasForeignKey(v => v.ProductID);
 
 			//13.Chỉ định mối quan hệ của 1-N của:
 			//13.1.TypeProductsOfServices(1) & Products(N)
 			builder.Entity<Products>()
-				.HasOne(t => t.TypeProductsOfServices)  
-				.WithMany(p => p.Products)             
+				.HasOne(t => t.TypeProductsOfServices)
+				.WithMany(p => p.Products)
 				.HasForeignKey(s => s.ProductsOfServicesID);
 
 			//13.2.TypeProductsOfServices(1) & Servicess(N)
-			builder.Entity<Servicess>()                 
-				.HasOne(t => t.TypeProductsOfServices)  
-				.WithMany(s => s.Services)              
+			builder.Entity<Servicess>()
+				.HasOne(t => t.TypeProductsOfServices)
+				.WithMany(s => s.Services)
 				.HasForeignKey(v => v.ProductsOfServicesID);
 
 			//13.3 TypeProductsOfServices(1) & Clinic(1)
@@ -175,7 +175,7 @@ namespace Aesthetics.DataAccess.NetCore.DBContext
 
 			//20. Quan hệ 1-N giữa Services & InvoiceDetail
 			builder.Entity<InvoiceDetail>()
-				.HasOne(s => s.	Servicess)
+				.HasOne(s => s.Servicess)
 				.WithMany(a => a.InvoiceDetail)
 				.HasForeignKey(s => s.ServiceID);
 
@@ -190,6 +190,43 @@ namespace Aesthetics.DataAccess.NetCore.DBContext
 				.HasOne(i => i.Vouchers)
 				.WithOne(v => v.InvoiceDetails)
 				.HasForeignKey<InvoiceDetail>(i => i.VoucherID);
+
+			//23. Cấu hình kiểu dữ liệu lại decimal khi không khai báo Annotation trực tiếp trong model
+			builder.Entity<Invoice>()
+				.Property(i => i.TotalMoney)
+				.HasPrecision(18, 2);
+
+			builder.Entity<InvoiceDetail>()
+				.Property(i => i.PriceProduct)
+				.HasPrecision(18, 2);
+
+			builder.Entity<InvoiceDetail>()
+				.Property(i => i.PriceService)
+				.HasPrecision(18, 2);
+
+			builder.Entity<InvoiceDetail>()
+				.Property(i => i.TotalMoney)
+				.HasPrecision(18, 2);
+
+			builder.Entity<Products>()
+				.Property(p => p.SellingPrice)
+				.HasPrecision(18, 2);
+
+			builder.Entity<Servicess>()
+				.Property(s => s.PriceService)
+				.HasPrecision(18, 2);
+
+			builder.Entity<Users>()
+				.Property(u => u.SalesPoints)
+				.HasPrecision(18, 2);
+
+			builder.Entity<Vouchers>()
+				.Property(v => v.MaxValue)
+				.HasPrecision(18, 2);
+
+			builder.Entity<Vouchers>()
+				.Property(v => v.MinimumOrderValue)
+				.HasPrecision(18, 2);
 		}
 		public virtual DbSet<Booking> Booking { get; set; }
 		public virtual DbSet<Carts> Carts { get; set; }

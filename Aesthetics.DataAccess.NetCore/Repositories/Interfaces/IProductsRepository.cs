@@ -24,19 +24,22 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 		//4.Function Get list & Search Products
 		Task<ResponseProducts_LogginGetList> GetList_SearchProducts(GetList_SearchProducts getList_);
 
-		//5.Base Processing Function 64
+		//5. Sort list Product
+		Task<ResponseProducts_LogginGetList> GetSortedPagedProducts(SortListProducts sortList_);
+
+		//6.Base Processing Function 64
 		Task<string> BaseProcessingFunction64(string? ProductsImage);
 
-		//6.Function get Products by ProductID 
+		//7.Function get Products by ProductID 
 		Task<Products> GetProductsByProductID(int? ProductID);
 
-		//7.Function Export Products list to Excel
-		Task<ResponseData> ExportProductsToExcel(ExportExcel filePath);
+		//8.Function Export Products list to Excel
+		Task<ResponseData> ExportProductsToExcel(ExportProductExcel filePath);
 
-		//8.Function get ProductOfServices by ProductsOfServicesID
+		//9.Function get ProductOfServices by ProductsOfServicesID
 		Task<TypeProductsOfServices> GetProductOfServicesByID(int? ProductsOfServicesID);
 
-		//9.Update Quantity Product
+		//10.Update Quantity Product
 		Task UpdateQuantityPro(int productID, int quantity);
 	}
 }

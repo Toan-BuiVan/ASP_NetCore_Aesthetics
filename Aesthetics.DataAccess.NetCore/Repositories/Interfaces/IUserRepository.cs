@@ -50,8 +50,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interface
 		//13.UpdateRatingPoints_Customer
 		Task UpdateRatingPoints_Customer(int userID);
 
-		//14.Update AccumulatedPoints
-
+		//14.Update SalesPoints
 		Task UpdateSalesPoints(int employeeId, decimal money); 
 	}
 }
