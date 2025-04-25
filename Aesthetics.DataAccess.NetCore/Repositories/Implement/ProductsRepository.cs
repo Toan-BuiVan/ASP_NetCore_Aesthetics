@@ -185,6 +185,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					EmployeeID = employee?.UserID,
 					DateCreated = DateTime.Now,
 					DeleteStatus = 1,
+					TotalMoney = products_.Quantity * products_.SellingPrice,
 					Type = "Input"
 				};
 				_context.Invoice.Add(newInvoice);
@@ -195,6 +196,7 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 					EmployeeID = newInvoice.EmployeeID,
 					DateCreated = newInvoice.DateCreated,
 					DeleteStatus = newInvoice.DeleteStatus,
+					TotalMoney = newInvoice.TotalMoney,
 					Type = newInvoice.Type,
 				});
 

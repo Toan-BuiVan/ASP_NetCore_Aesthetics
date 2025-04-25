@@ -6,6 +6,7 @@ using Aesthetics.DTO.NetCore.DataObject.LogginModel;
 using Aesthetics.DTO.NetCore.DataObject.Model;
 using Aesthetics.DTO.NetCore.RequestData;
 using Aesthetics.DTO.NetCore.ResponseInvoice_Loggin;
+using BE_102024.DataAces.NetCore.CheckConditions;
 using BE_102024.DataAces.NetCore.Dapper;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
@@ -684,10 +685,38 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						return returnData;
 					}
 				}
+				if (getList_.InvoiceType != null)
+				{
+					if (!Validation.CheckString(getList_.InvoiceType) || !Validation.CheckXSSInput(getList_.InvoiceType))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceType không hợp lệ!";
+						return returnData;
+					}
+					if (!string.Equals(getList_.InvoiceType, "Input", StringComparison.OrdinalIgnoreCase) &&
+						!string.Equals(getList_.InvoiceType, "Ouput", StringComparison.OrdinalIgnoreCase))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceDetailType chỉ chấp nhận Input || Ouput";
+						return returnData;
+					}
+				}
+				if (getList_.StartDate != null && getList_.EndDate != null)
+				{
+					if (getList_.EndDate < getList_.StartDate)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Ngày kết thúc không được nhỏ hơn ngày bắt đầu!";
+						return returnData;
+					}
+				}
 				var parameters = new DynamicParameters();
 				parameters.Add("@InvoiceID", getList_.InvoiceID ?? null);
 				parameters.Add("@EmployeeID", getList_.EmployeeID ?? null);
 				parameters.Add("@CustomerID", getList_.CustomerID ?? null);
+				parameters.Add("@InvoiceType", getList_.InvoiceType ?? null);
+				parameters.Add("@StartDate", getList_.StartDate ?? null);
+				parameters.Add("@EndDate", getList_.EndDate ?? null);
 				var _listInvoice = await DbConnection.QueryAsync<GetList_Invoice_Out>("GetList_SearchInvoice", parameters);
 				if (_listInvoice != null && _listInvoice.Any())
 				{
@@ -723,8 +752,37 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						return returnData;
 					}
 				}
+				if (getList_.InvoiceDetailType != null)
+				{
+					if (!Validation.CheckString(getList_.InvoiceDetailType) || !Validation.CheckXSSInput(getList_.InvoiceDetailType))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceDetailType không hợp lệ!";
+						return returnData;
+					}
+					if (!string.Equals(getList_.InvoiceDetailType, "Input", StringComparison.OrdinalIgnoreCase) &&
+						!string.Equals(getList_.InvoiceDetailType, "Ouput", StringComparison.OrdinalIgnoreCase))
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "InvoiceDetailType chỉ chấp nhận Input || Ouput";
+						return returnData;
+					}
+
+				}
+				if (getList_.StartDate != null && getList_.EndDate != null)
+				{
+					if (getList_.EndDate < getList_.StartDate)
+					{
+						returnData.ResponseCode = -1;
+						returnData.ResposeMessage = "Ngày kết thúc không được nhỏ hơn ngày bắt đầu!";
+						return returnData;
+					}
+				}
 				var parameters = new DynamicParameters();
 				parameters.Add("@InvoiceID", getList_.InvoiceID ?? null);
+				parameters.Add("@InvoiceDetailType", getList_.InvoiceDetailType ?? null);
+				parameters.Add("@StartDate", getList_.StartDate ?? null);
+				parameters.Add("@EndDate", getList_.EndDate ?? null);
 				var _listInvoice = await DbConnection.QueryAsync<GetList_InvoiceDetail_Out>("GetList_SearchInvoiceDetail", parameters);
 				if (_listInvoice != null && _listInvoice.Any())
 				{

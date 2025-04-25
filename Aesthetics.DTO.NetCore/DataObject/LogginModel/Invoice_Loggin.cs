@@ -12,6 +12,7 @@ namespace Aesthetics.DTO.NetCore.DataObject.LogginModel
 		public int? EmployeeID { get; set; }
 		public DateTime? DateCreated { get; set; }
 		public int? DeleteStatus { get; set; }
+		public decimal? TotalMoney { get; set; }
 		public string? Type { get; set; }
 	}
 

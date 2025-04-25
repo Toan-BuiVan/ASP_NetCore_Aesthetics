@@ -16,10 +16,7 @@ namespace Aesthetics.DTO.NetCore.DataObject.Model
 		public int? VoucherID { get; set; }
         public string? Code { get; set; }
         public double? DiscountValue { get; set; }
-
-
 		public decimal? TotalMoney { get; set; }
-
 		public DateTime? DateCreated { get; set; }
         public string? Status { get; set; }
         public int? DeleteStatus { get; set; }

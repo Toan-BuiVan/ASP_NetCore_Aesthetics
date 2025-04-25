@@ -25,10 +25,16 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public int? CustomerID { get; set; }
 		public int? EmployeeID { get; set; }
 		public int? InvoiceID { get; set; }
+		public string? InvoiceType { get; set; }
+		public DateTime? StartDate { get; set; }
+		public DateTime? EndDate { get; set; }
 	}
 
 	public class GetList_InvoiceDetail
 	{
 		public int? InvoiceID { get; set; }
+		public string? InvoiceDetailType { get; set; }
+		public DateTime? StartDate { get; set; }
+		public DateTime? EndDate { get; set; }
 	}
 }

@@ -2574,6 +2574,20 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2584,6 +2598,20 @@
           "invoiceID": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "invoiceDetailType": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },
