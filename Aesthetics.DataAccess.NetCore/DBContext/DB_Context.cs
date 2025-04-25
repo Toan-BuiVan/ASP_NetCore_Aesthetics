@@ -248,5 +248,6 @@ namespace Aesthetics.DataAccess.NetCore.DBContext
 		public virtual DbSet<BookingServicess> Booking_Servicess { get; set; }
 		public virtual DbSet<Clinic> Clinic { get; set; }
 		public virtual DbSet<Clinic_Staff> Clinic_Staff { get; set; }
+		public virtual DbSet<Advise> Advise { get; set; }
 	}
 }

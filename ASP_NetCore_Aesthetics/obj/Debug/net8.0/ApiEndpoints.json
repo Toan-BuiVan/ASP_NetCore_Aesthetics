@@ -1,5 +1,69 @@
 [
   {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AdviseController",
+    "Method": "Delete_Advise",
+    "RelativePath": "api/Advise/Delete_Advise",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delete_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Advise",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AdviseController",
+    "Method": "GetList_SearchAdvise",
+    "RelativePath": "api/Advise/GetList_SearchAdvise",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "getLisr_",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.GetLisr_SearchAdvise",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AdviseController",
+    "Method": "Insert_Advise",
+    "RelativePath": "api/Advise/Insert_Advise",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "adviseRequest",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.AdviseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AdviseController",
+    "Method": "Update_Advise",
+    "RelativePath": "api/Advise/Update_Advise",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "update_Advise",
+        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Advise",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.AuthenticationController",
     "Method": "Check_Token",
     "RelativePath": "api/Authentication/Check_Token",

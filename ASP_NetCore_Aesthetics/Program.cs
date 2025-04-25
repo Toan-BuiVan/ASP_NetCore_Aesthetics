@@ -65,6 +65,7 @@ builder.Services.AddTransient<ICartProductRepository, CartProductRepositoty>();
 builder.Services.AddTransient<IVouchersRepository, VouchersRepository>();
 builder.Services.AddTransient<IWalletsRepository, WalletsRepository>();
 builder.Services.AddTransient<IInvoiceRepository, InvoiceRepository>();
+builder.Services.AddTransient<IAdviseRepository, AdviseRepository>();
 builder.Services.AddScoped<Filter_CheckToken>();
 builder.Services.AddTransient<ILoggerManager, LoggerManager>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
