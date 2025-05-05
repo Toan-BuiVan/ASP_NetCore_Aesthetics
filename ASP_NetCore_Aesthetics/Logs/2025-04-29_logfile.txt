@@ -1,0 +1,23 @@
+2025-04-29 14:59:42.8136 INFO Insert_Invoice Request: {"CustomerID":4,"EmployeeID":3,"VoucherID":null,"ProductIDs":[1,2,18],"QuantityProduct":[1,1,1],"ServicesIDs":null,"QuantityServices":null}
+2025-04-29 14:59:42.8501 INFO Insert_Invoice Response data: [{"InvoiceID":1018,"CustomerID":4,"EmployeeID":3,"VoucherID":null,"Code":null,"DiscountValue":null,"TotalMoney":1147000.00,"DateCreated":"2025-04-29T14:59:42.3462567+07:00","Status":"Pending","DeleteStatus":1,"Type":"Ouput"}]
+2025-04-29 14:59:42.8501 INFO Insert_InvoiceDetail Response data: [{"InvoiceDetailID":1593,"InvoiceID":0,"CustomerID":4,"CustomerName":"minhNhat","EmployeeID":3,"EmployeeName":"ducHai","ProductID":1,"ProductName":"Kem giảm mụn La Roche-Posay Effaclar Duo Oke","ServiceID":null,"ServiceName":null,"VoucherID":0,"Code":null,"DiscountValue":null,"PriceService":null,"PriceProduct":389000.00,"TotalQuantityService":null,"TotalQuantityProduct":1,"TotalMoney":389000.00,"Status":"Pending","DeleteStatus":1,"Type":"Ouput"},{"InvoiceDetailID":1594,"InvoiceID":0,"CustomerID":4,"CustomerName":"minhNhat","EmployeeID":3,"EmployeeName":"ducHai","ProductID":2,"ProductName":"Kem giảm mụn La Roche-Posay Effaclar Duo","ServiceID":null,"ServiceName":null,"VoucherID":0,"Code":null,"DiscountValue":null,"PriceService":null,"PriceProduct":369000.00,"TotalQuantityService":null,"TotalQuantityProduct":1,"TotalMoney":369000.00,"Status":"Pending","DeleteStatus":1,"Type":"Ouput"},{"InvoiceDetailID":1595,"InvoiceID":0,"CustomerID":4,"CustomerName":"minhNhat","EmployeeID":3,"EmployeeName":"ducHai","ProductID":18,"ProductName":"Kem giảm mụn La Roche-Posay Effaclar Duo OOO","ServiceID":null,"ServiceName":null,"VoucherID":0,"Code":null,"DiscountValue":null,"PriceService":null,"PriceProduct":389000.00,"TotalQuantityService":null,"TotalQuantityProduct":1,"TotalMoney":389000.00,"Status":"Pending","DeleteStatus":1,"Type":"Ouput"}]
+2025-04-29 15:11:21.9536 INFO Insert Products Request: {"EmployeeID":0,"ProductsOfServicesID":0,"SupplierID":0,"ProductName":"string","ProductDescription":"string","SellingPrice":0.0,"Quantity":0,"ProductImages":"string"}
+2025-04-29 15:11:21.9536 INFO Insert Products: null
+2025-04-29 15:11:21.9536 INFO Insert Invoice Input: null
+2025-04-29 15:11:21.9536 INFO Insert InvoiceDetail Input: null
+2025-04-29 15:12:27.7705 INFO Update Servicess Request: {"ServiceID":0,"ProductsOfServicesID":0,"ServiceName":"string","Description":"string","ServiceImage":"string","PriceService":0.0}
+2025-04-29 15:12:27.7705 INFO Update Servicess Response data : null
+2025-04-29 15:13:54.1225 INFO Delete_Products Request: {"ProductID":0}
+2025-04-29 15:13:54.1225 INFO Delete_Products Response data : null
+2025-04-29 15:13:54.1225 INFO Delete_Comment Response data : null
+2025-04-29 15:13:54.1225 INFO Delete_CartProducts Response data : null
+2025-04-29 15:14:27.7561 INFO ExportProductsToExcel Servicess Request: {"ProductID":0,"ProductName":"string","ProductsOfServicesName":"string","SupplierName":"string","filePath":"string"}
+2025-04-29 22:29:21.0658 INFO Insert_CartProduct Request: {"CartID":0,"ProductID":0,"Quantity":0}
+2025-04-29 22:29:21.0778 INFO Insert_CartProduct Response data: null
+2025-04-29 22:29:54.8896 INFO Update_CartProduct Request: {"CartProductID":0,"Quantity":0}
+2025-04-29 22:29:54.8896 INFO Update_CartProduct Response data: null
+2025-04-29 22:30:38.9795 INFO Delete_CartProduct Request: {"CartProductID":0}
+2025-04-29 22:30:38.9795 INFO Delete_CartProduct Response data: null
+2025-04-29 22:47:17.9076 INFO Insert_Invoice Request: {"CustomerID":0,"EmployeeID":0,"VoucherID":0,"ProductIDs":[0],"QuantityProduct":[0],"ServicesIDs":[0],"QuantityServices":[0]}
+2025-04-29 22:47:17.9076 INFO Insert_Invoice Response data: null
+2025-04-29 22:47:17.9076 INFO Insert_InvoiceDetail Response data: null

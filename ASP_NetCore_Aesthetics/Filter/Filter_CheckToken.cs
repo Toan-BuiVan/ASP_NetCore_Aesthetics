@@ -26,7 +26,7 @@ namespace ASP_NetCore_Aesthetics.Filter
 			var httpContext = context.HttpContext;
 			var request = httpContext.Request;
 
-			// Đọc token từ header
+			// Đọc token từ header - bắt buộc header phải truyền vào 4 tham số
 			var accessToken = request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "");
 			var refreshToken = request.Headers["RefreshToken"].FirstOrDefault();
 			var userIdString = request.Headers["UserID"].FirstOrDefault();
@@ -43,24 +43,18 @@ namespace ASP_NetCore_Aesthetics.Filter
 				SetUnauthorizedResponse(context, "UserID không hợp lệ.");
 				return;
 			}
-
-			// Kiểm tra cache trước
 			var cacheKey = $"User_{userId}-{deviceName}";
 			byte[] cacheData = await _cache.GetAsync(cacheKey);
 			if (cacheData != null)
 			{
-				return; // Token hợp lệ từ cache => bỏ qua kiểm tra
+				return; 
 			}
-
-			// Kiểm tra thông tin User
 			var userDetail = await _accountRepository.User_GetByID(userId);
 			if (userDetail == null)
 			{
 				SetUnauthorizedResponse(context, $"Token của User {userId} không tồn tại!");
 				return;
 			}
-
-			// Kiểm tra thời hạn token
 			if (userDetail.TokenExprired < DateTime.Now)
 			{
 				SetUnauthorizedResponse(context, "Token hết hạn, vui lòng đăng nhập lại!");

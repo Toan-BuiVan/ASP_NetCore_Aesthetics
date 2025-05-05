@@ -165,25 +165,25 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 		}
 
-		[HttpGet("GetList_SearchBooking_Services")]
-		public async Task<IActionResult> GetList_SearchBooking_Services(GetList_SearchBooking_Services getList_)
-		{
-			try
-			{
-				//1. GetList_SearchBooking_Services
-				var responseData = await _bookingRepository.GetList_SearchBooking_Services(getList_);
-				//2. Lưu log request
-				_loggerManager.LogInfo("GetList_SearchBooking_Services Requets: " + JsonConvert.SerializeObject(getList_));
-				//3. Lưu log data trả về
-				_loggerManager.LogInfo("GetList_SearchBooking_Services data: " + JsonConvert.SerializeObject(responseData.Data));
-				return Ok(responseData);
-			}
-			catch (Exception ex)
-			{
-				_loggerManager.LogError("{Error Insert Clinic} Message: " + ex.Message +
-					"|" + "Stack Trace: " + ex.StackTrace);
-				return Ok(ex.Message);
-			}
-		}
+		//[HttpGet("GetList_SearchBooking_Services")]
+		//public async Task<IActionResult> GetList_SearchBooking_Services(GetList_SearchBooking_Services getList_)
+		//{
+		//	try
+		//	{
+		//		//1. GetList_SearchBooking_Services
+		//		var responseData = await _bookingRepository.GetList_SearchBooking_Services(getList_);
+		//		//2. Lưu log request
+		//		_loggerManager.LogInfo("GetList_SearchBooking_Services Requets: " + JsonConvert.SerializeObject(getList_));
+		//		//3. Lưu log data trả về
+		//		_loggerManager.LogInfo("GetList_SearchBooking_Services data: " + JsonConvert.SerializeObject(responseData.Data));
+		//		return Ok(responseData);
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		_loggerManager.LogError("{Error Insert Clinic} Message: " + ex.Message +
+		//			"|" + "Stack Trace: " + ex.StackTrace);
+		//		return Ok(ex.Message);
+		//	}
+		//}
 	}
 }

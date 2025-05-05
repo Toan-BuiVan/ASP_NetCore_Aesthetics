@@ -11,6 +11,7 @@ namespace Aesthetics.DTO.NetCore.RequestData
 		public string UserName { get; set; }
 		public string PassWord { get; set; }
 		public string? ReferralCode { get; set; }
+		public string? TypePersson { get; set; }
 	}
 
 	public class User_Update

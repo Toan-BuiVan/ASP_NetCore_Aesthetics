@@ -209,22 +209,6 @@
   },
   {
     "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
-    "Method": "GetList_SearchBooking_Services",
-    "RelativePath": "api/Bookings/GetList_SearchBooking_Services",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "getList_",
-        "Type": "Aesthetics.DTO.NetCore.RequestData.GetList_SearchBooking_Services",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.BookingsController",
     "Method": "Insert_Booking",
     "RelativePath": "api/Bookings/Insert_Booking",
     "HttpMethod": "POST",
@@ -1182,22 +1166,6 @@
       {
         "Name": "_redeem",
         "Type": "Aesthetics.DTO.NetCore.RequestData.RedeemVouchers",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ASP_NetCore_Aesthetics.Controllers.WalletsController",
-    "Method": "Update_Wallets",
-    "RelativePath": "api/Wallets/Update_Wallets",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "update_",
-        "Type": "Aesthetics.DTO.NetCore.RequestData.Update_Wallest",
         "IsRequired": true
       }
     ],

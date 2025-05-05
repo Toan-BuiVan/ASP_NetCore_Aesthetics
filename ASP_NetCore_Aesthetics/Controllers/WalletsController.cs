@@ -66,26 +66,26 @@ namespace ASP_NetCore_Aesthetics.Controllers
 			}
 		}
 
-		[HttpPost("Update_Wallets")]
-		public async Task<IActionResult> Update_Wallets(Update_Wallest update_)
-		{
-			try
-			{
-				//1.Update_Wallets 
-				var responseData = await _walletsRepository.Update_Wallets(update_);
-				//2. Lưu log request
-				_loggerManager.LogInfo("Update_Wallets Request: " + JsonConvert.SerializeObject(update_));
-				//3. Lưu log data response
-				_loggerManager.LogInfo("Update_Wallets Response data: " + JsonConvert.SerializeObject(responseData.wallets_Loggins));
-				return Ok(responseData);
-			}
-			catch (Exception ex)
-			{
-				_loggerManager.LogError("{Error Update_Wallets} Message: " + ex.Message +
-					"|" + "Stack Trace: " + ex.StackTrace);
-				return Ok(ex.Message);
-			}
-		}
+		//[HttpPost("Update_Wallets")]
+		//public async Task<IActionResult> Update_Wallets(Update_Wallest update_)
+		//{
+		//	try
+		//	{
+		//		//1.Update_Wallets 
+		//		var responseData = await _walletsRepository.Update_Wallets(update_);
+		//		//2. Lưu log request
+		//		_loggerManager.LogInfo("Update_Wallets Request: " + JsonConvert.SerializeObject(update_));
+		//		//3. Lưu log data response
+		//		_loggerManager.LogInfo("Update_Wallets Response data: " + JsonConvert.SerializeObject(responseData.wallets_Loggins));
+		//		return Ok(responseData);
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		_loggerManager.LogError("{Error Update_Wallets} Message: " + ex.Message +
+		//			"|" + "Stack Trace: " + ex.StackTrace);
+		//		return Ok(ex.Message);
+		//	}
+		//}
 
 		[HttpDelete("Delete_Wallets")]
 		public async Task<IActionResult> Delete_Wallets(Delete_Wallest delete_)

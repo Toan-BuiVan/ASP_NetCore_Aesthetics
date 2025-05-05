@@ -197,6 +197,12 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 							returnData.ResposeMessage = $"Quantity ProductID: {productID} không hợp lệ!";
 							return returnData;
 						}
+						if (quantityProduct > product.Quantity)
+						{
+							returnData.ResponseCode = -1;
+							returnData.ResposeMessage = $"Quantity ProductID: {productID} vượt quá số lượng của cửa hàng hiện có!";
+							return returnData;
+						}
 						if (service == null)
 						{
 							returnData.ResponseCode = -1;
@@ -405,7 +411,13 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Implement
 						if (quantity <= 0)
 						{
 							returnData.ResponseCode = -1;
-							returnData.ResposeMessage = $"Vui lòng nhập lại số lượng của ProductID: {productID}!";
+							returnData.ResposeMessage = $"Quantity ProductID: {productID} không hợp lệ!";
+							return returnData;
+						}
+						if ( quantity > product.Quantity)
+						{
+							returnData.ResponseCode = -1;
+							returnData.ResposeMessage = $"Quantity ProductID: {productID} vượt quá số lượng của cửa hàng hiện có!";
 							return returnData;
 						}
 

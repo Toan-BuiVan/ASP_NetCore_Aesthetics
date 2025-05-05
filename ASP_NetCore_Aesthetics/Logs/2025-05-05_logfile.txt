@@ -1,0 +1,6 @@
+2025-05-05 14:21:41.1680 INFO Insert_Invoice Request: {"CustomerID":0,"EmployeeID":0,"VoucherID":0,"ProductIDs":[0],"QuantityProduct":[0],"ServicesIDs":[0],"QuantityServices":[0]}
+2025-05-05 14:21:41.1933 INFO Insert_Invoice Response data: null
+2025-05-05 14:21:41.1933 INFO Insert_InvoiceDetail Response data: null
+2025-05-05 14:21:58.0249 INFO Delete_Invoice Request: {"InvoiceID":0}
+2025-05-05 14:21:58.0249 INFO Delete_Invoice Response data: null
+2025-05-05 14:21:58.0249 INFO Delete_InvoiceDetail Response data: null

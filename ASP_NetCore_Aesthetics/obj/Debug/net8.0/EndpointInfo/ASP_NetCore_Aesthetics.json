@@ -470,37 +470,6 @@
         }
       }
     },
-    "/api/Bookings/GetList_SearchBooking_Services": {
-      "get": {
-        "tags": [
-          "Bookings"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetList_SearchBooking_Services"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetList_SearchBooking_Services"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetList_SearchBooking_Services"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/CartProduct/Insert_CartProduct": {
       "post": {
         "tags": [
@@ -2230,37 +2199,6 @@
         }
       }
     },
-    "/api/Wallets/Update_Wallets": {
-      "post": {
-        "tags": [
-          "Wallets"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Update_Wallest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Update_Wallest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Update_Wallest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/Wallets/Delete_Wallets": {
       "delete": {
         "tags": [
@@ -2858,17 +2796,6 @@
           "assignedDate": {
             "type": "string",
             "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GetList_SearchBooking_Services": {
-        "type": "object",
-        "properties": {
-          "bookingID": {
-            "type": "integer",
-            "format": "int32",
             "nullable": true
           }
         },
@@ -3578,26 +3505,6 @@
             "nullable": true
           },
           "accumulatedPoints": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Update_Wallest": {
-        "type": "object",
-        "properties": {
-          "walletsID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userID": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "voucherID": {
             "type": "integer",
             "format": "int32",
             "nullable": true

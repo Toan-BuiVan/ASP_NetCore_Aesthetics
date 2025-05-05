@@ -27,10 +27,10 @@ namespace Aesthetics.DataAccess.NetCore.Repositories.Interfaces
 		//6.Function get list & search Booking_Servicess
 		Task<ResponseBooking_ServicesData> GetList_SearchBooking_Services(GetList_SearchBooking_Services getList_);
 
-		//7. Insert booking_Services & booking_Assignment
+		//7. Insert booking_Services & booking_Assignment - để khi muốn sửa booking 
 		Task<ResponseBooking_Ser_Ass> Insert_BookingSer_Assi(Insert_Booking_Services insert_);
 
-		//8. Delete booking_Services & booking_Assignment
+		//8. Delete booking_Services & booking_Assignment - để khi muốn sửa booking 
 		Task<ResponseBooking_Ser_Ass> Delete_BookingSer_Assi(Delete_Booking_Services insert_);
 
 		//8.Function gen NumberOrder
